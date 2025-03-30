@@ -59,24 +59,6 @@ const Portfolio = () => {
             position: "Founder, StartupHub",
             content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
             avatar: "/api/placeholder/80/80"
-        },
-        {
-            name: "Michael Chen",
-            position: "Founder, StartupHub",
-            content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
-            avatar: "/api/placeholder/80/80"
-        },
-        {
-            name: "Michael Chen",
-            position: "Founder, StartupHub",
-            content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
-            avatar: "/api/placeholder/80/80"
-        },
-        {
-            name: "Michael Chen",
-            position: "Founder, StartupHub",
-            content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
-            avatar: "/api/placeholder/80/80"
         }
     ];
 

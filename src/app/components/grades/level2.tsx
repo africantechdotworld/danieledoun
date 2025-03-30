@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, Phone, ChevronDown, ExternalLink, Code, Star, User, Briefcase, Download } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from '../ThemeToggle';
 
 interface Project {
     title: string;
@@ -52,24 +52,6 @@ const Portfolio = () => {
             name: "Sarah Johnson",
             position: "CTO, TechVentures",
             content: "John delivered our project on time and exceeded our expectations. His attention to detail and problem-solving skills are exceptional.",
-            avatar: "/api/placeholder/80/80"
-        },
-        {
-            name: "Michael Chen",
-            position: "Founder, StartupHub",
-            content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
-            avatar: "/api/placeholder/80/80"
-        },
-        {
-            name: "Michael Chen",
-            position: "Founder, StartupHub",
-            content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
-            avatar: "/api/placeholder/80/80"
-        },
-        {
-            name: "Michael Chen",
-            position: "Founder, StartupHub",
-            content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
             avatar: "/api/placeholder/80/80"
         },
         {

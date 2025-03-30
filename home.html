@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrideFlex - Performance Shoes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3B82F6', // Blue accent
+                        secondary: '#6B7280', // Gray for text
+                        accent: '#F9A825', // Yellow accent
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-100">
+
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-semibold text-primary">StrideFlex</a>
+            <ul class="flex space-x-6">
+                <li><a href="#" class="hover:text-primary">Home</a></li>
+                <li><a href="#" class="hover:text-primary">Features</a></li>
+                <li><a href="#" class="hover:text-primary">Shop</a></li>
+                <li><a href="#" class="hover:text-primary">Contact</a></li>
+            </ul>
+            <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600">Buy Now</button>
+        </nav>
+    </header>
+
+    <section class="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 text-center md:text-left">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Experience Ultimate Comfort with StrideFlex</h1>
+            <p class="text-secondary text-lg mb-8">Revolutionize your stride with our lightweight, breathable performance shoes. Designed for maximum comfort and support.</p>
+            <button class="bg-accent text-white px-8 py-3 rounded-full text-lg hover:bg-yellow-500">Discover More</button>
+        </div>
+        <div class="md:w-1/2 mt-10 md:mt-0">
+            <img src="sneakers.jpg" alt="StrideFlex Shoes" class="rounded-lg shadow-lg">
+        </div>
+    </section>
+
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-8">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 border rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Breathable Mesh</h3>
+                    <p class="text-secondary">Keeps your feet cool and comfortable all day.</p>
+                </div>
+                <div class="p-6 border rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Responsive Cushioning</h3>
+                    <p class="text-secondary">Provides excellent shock absorption and energy return.</p>
+                </div>
+                <div class="p-6 border rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Durable Outsole</h3>
+                    <p class="text-secondary">Offers superior traction and long-lasting wear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-200 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-8">Ready to Stride?</h2>
+            <p class="text-secondary text-lg mb-8">Get your pair of StrideFlex shoes today and experience the difference.</p>
+            <button class="bg-primary text-white px-8 py-3 rounded-full text-lg hover:bg-blue-600">Shop Now</button>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 StrideFlex. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
