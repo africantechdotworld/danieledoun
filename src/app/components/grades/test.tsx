@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, Phone, ChevronDown, ExternalLink, Code, Star, User, Briefcase, Download, ArrowRight } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from '../ThemeToggle';
 import Link from 'next/link';
 
 interface Project {
