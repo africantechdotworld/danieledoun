@@ -1,0 +1,48 @@
+My Info
+
+Name: Isaac Rufus
+Role: Full Stack Developer
+Phone: +2348085355192
+Email: heisrufus@gmail.com
+
+Social Media Links
+
+WhatsApp
+https://wa.me/+2348085355192
+
+LinkedIn : 
+https://www.linkedin.com/in/oreoluwa-rufus-6b47b3305
+
+Facebook :
+https://www.facebook.com/profile.php?id=100094227428070&mibextid=wwXIfr&mibextid=wwXIfr
+
+Instagram :
+https://www.instagram.com/oreo.software
+
+TikTok :
+https://www.tiktok.com/@himrufus
+
+YouTube :
+https://youtube.com/@heisrufus
+
+X :
+https://x.com/roreoluwa95178?s=21
+
+Projects (Note that these projects have different types, could be machine learning system, web apps, games, mobile apps, apis )
+
+Note: proects that has mobile and web app fully developed should be created as separate projects
+
+1. Menuflixer - Full fledged digital food menu management platform , developed full stack web apps to empower operations - https://menuflixer.vercel.app
+    Stack: ReactJs, NodeJs, RestAPI, Firebase, MongoDb, TailwindCSS, Shadcn UI Components, Framer Motion, Payfast, JWT, Charts.
+Note: This project is in two parts majorly, establishments website/app and customer app
+the customer app is for restaurant or dining establishment customers to use in scanning their restaurant’s qr codes to browse menu while the establishment web platform is for registering business with menuflixer and managing their menu managemanet powered dashboard. So justtry to use the little info provided to do something meaningful
+
+2. Dropdeli - Developed a landing page design for dropdeli food delivery platform , more company based apps coming soon 
+   Stack: HTML, CSS, JavaScript
+   3. AFM - Developed the landing page and currently developing the web app to power their operations for a loan funding website - Africa Fund Me - https://fund-africa.vercel.app
+Stack: HTML, CSS, JavaScript
+4. Dump - Developed both web app and mobile app for an all internet video downloader platform - https://dumpvideodownloader.com
+Mobile App Stack : Flutter, Google Play IAP , Admob Integration, RestAPI
+Web App Stack: ReactJS, Python, RestAPI, JSON, FFMPEG 
+5. Convert - An android mobile application develped to help with live data exchange of currencies using Jetpack Compose and consuming
+Stack: Android, Jetpack Compose, RESTAPI

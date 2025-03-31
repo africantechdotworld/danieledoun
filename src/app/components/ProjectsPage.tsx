@@ -24,75 +24,43 @@ const ProjectsPage = () => {
 
   const projects: Project[] = [
     {
-      title: "E-Commerce Mobile App",
-      description: "A full-featured mobile shopping app built with React Native and Node.js. Includes user authentication, product catalog, shopping cart, and payment integration.",
-      tags: ["React Native", "Node.js", "MongoDB", "Stripe"],
-      demoUrl: "https://demo.example.com/ecommerce",
-      githubUrl: "https://github.com/example/ecommerce",
+      title: "Menuflixer",
+      description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
+      tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
+      demoUrl: "https://menuflixer.vercel.app",
+      githubUrl: "#",
       image: "/api/placeholder/600/400"
     },
     {
-      title: "Task Management Platform",
-      description: "Web-based project management tool with real-time updates, team collaboration features, and automated workflow capabilities.",
-      tags: ["React", "Firebase", "Material UI", "WebSocket"],
-      demoUrl: "https://demo.example.com/taskmanager",
-      githubUrl: "https://github.com/example/taskmanager",
+      title: "Dropdeli",
+      description: "A modern landing page design for a food delivery platform, showcasing the brand's services and features with a clean, user-friendly interface.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoUrl: "#",
+      githubUrl: "#",
       image: "/api/placeholder/600/400"
     },
     {
-      title: "Health & Fitness Tracker",
-      description: "Cross-platform mobile application for tracking workouts, nutrition, and health metrics with personalized recommendations.",
-      tags: ["Flutter", "Firebase", "REST API", "Charts"],
-      demoUrl: "https://demo.example.com/fitness",
-      githubUrl: "https://github.com/example/fitness",
+      title: "Africa Fund Me",
+      description: "A loan funding website featuring a professional landing page and ongoing development of web application to power their operations.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoUrl: "https://fund-africa.vercel.app",
+      githubUrl: "#",
       image: "/api/placeholder/600/400"
     },
     {
-      title: "Social Media Dashboard",
-      description: "Comprehensive analytics dashboard for tracking social media performance across multiple platforms.",
-      tags: ["Vue.js", "D3.js", "Node.js", "OAuth"],
-      demoUrl: "https://demo.example.com/social-dashboard",
-      githubUrl: "https://github.com/example/social-dashboard",
+      title: "Dump Video Downloader",
+      description: "A comprehensive platform for downloading internet videos, available as both web and mobile applications with advanced features and user-friendly interface.",
+      tags: ["Flutter", "ReactJS", "Python", "RestAPI", "FFMPEG", "Google Play IAP", "Admob"],
+      demoUrl: "https://dumpvideodownloader.com",
+      githubUrl: "#",
       image: "/api/placeholder/600/400"
     },
     {
-      title: "AI-Powered Content Generator",
-      description: "Web application using OpenAI APIs to generate marketing content, blog posts, and social media updates.",
-      tags: ["React", "OpenAI API", "Express", "MongoDB"],
-      demoUrl: "https://demo.example.com/ai-content",
-      githubUrl: "https://github.com/example/ai-content",
-      image: "/api/placeholder/600/400"
-    },
-    {
-      title: "Smart Home IoT Hub",
-      description: "Mobile app and web dashboard to control and monitor IoT devices in a smart home environment.",
-      tags: ["React Native", "IoT", "WebSockets", "GraphQL"],
-      demoUrl: "https://demo.example.com/smart-home",
-      githubUrl: "https://github.com/example/smart-home",
-      image: "/api/placeholder/600/400"
-    },
-    {
-      title: "Personal Finance Tracker",
-      description: "Web and mobile application for tracking expenses, investments, and financial goals with visualization tools.",
-      tags: ["React", "D3.js", "Node.js", "PostgreSQL"],
-      demoUrl: "https://demo.example.com/finance",
-      githubUrl: "https://github.com/example/finance",
-      image: "/api/placeholder/600/400"
-    },
-    {
-      title: "Restaurant Ordering System",
-      description: "Mobile and web platform for restaurant menu browsing, ordering, and payment processing.",
-      tags: ["React Native", "Firebase", "Stripe", "Node.js"],
-      demoUrl: "https://demo.example.com/restaurant",
-      githubUrl: "https://github.com/example/restaurant",
-      image: "/api/placeholder/600/400"
-    },
-    {
-      title: "Travel Itinerary Planner",
-      description: "AI-enhanced travel planning application with itinerary building, recommendations, and booking integration.",
-      tags: ["Next.js", "Google Maps API", "TensorFlow", "MongoDB"],
-      demoUrl: "https://demo.example.com/travel",
-      githubUrl: "https://github.com/example/travel",
+      title: "Convert",
+      description: "An Android mobile application for live currency exchange, built with modern Android development practices and real-time data integration.",
+      tags: ["Android", "Jetpack Compose", "RESTAPI"],
+      demoUrl: "#",
+      githubUrl: "#",
       image: "/api/placeholder/600/400"
     }
   ];
@@ -101,8 +69,16 @@ const ProjectsPage = () => {
   const filteredProjects = activeTab === 'all' 
     ? projects 
     : projects.filter(project => {
-        if (activeTab === 'web') return project.tags.some(tag => ['React', 'Vue.js', 'Next.js'].includes(tag));
-        if (activeTab === 'mobile') return project.tags.some(tag => ['React Native', 'Flutter'].includes(tag));
+        if (activeTab === 'web') {
+          return project.tags.some(tag => 
+            ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 'JWT', 'Charts', 'Payfast'].includes(tag)
+          );
+        }
+        if (activeTab === 'mobile') {
+          return project.tags.some(tag => 
+            ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag)
+          );
+        }
         return true;
       });
 
@@ -216,19 +192,19 @@ const ProjectsPage = () => {
               onClick={() => setActiveTab('all')} 
               className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'all' ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'}`}
             >
-              All
+              All ({projects.length})
             </button>
             <button 
               onClick={() => setActiveTab('web')} 
               className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'web' ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'}`}
             >
-              Web
+              Web ({projects.filter(p => p.tags.some(tag => ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 'JWT', 'Charts', 'Payfast'].includes(tag))).length})
             </button>
             <button 
               onClick={() => setActiveTab('mobile')} 
               className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'mobile' ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'}`}
             >
-              Mobile
+              Mobile ({projects.filter(p => p.tags.some(tag => ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag))).length})
             </button>
           </div>
         </div>
@@ -244,19 +220,34 @@ const ProjectsPage = () => {
       <footer className="bg-gray-900 dark:bg-black text-white py-8 mt-20">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
               <h3 className="text-xl font-bold">Isaac Rufus</h3>
               <p className="text-gray-400 mt-1">Full Stack Developer</p>
             </div>
             
             <div className="flex space-x-6">
-              <a href="https://github.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://github.com/africantechdotworld" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/oreoluwa-rufus-6b47b3305" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:john@example.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=100094227428070" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/oreo.software" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://youtube.com/@heisrufus" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="mailto:heisrufus@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -265,7 +256,7 @@ const ProjectsPage = () => {
           <hr className="border-gray-800 my-6" />
           
           <div className="text-center text-gray-400 text-sm">
-            <p>© 2025 Isaac Rufus. All rights reserved.</p>
+            <p>© 2024 Isaac Rufus. All rights reserved.</p>
             <p className="mt-2">Built with React, Next.js, and Tailwind CSS</p>
           </div>
         </div>

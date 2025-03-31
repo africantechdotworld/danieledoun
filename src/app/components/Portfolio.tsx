@@ -5,8 +5,12 @@ import { Github, Linkedin, Mail, Phone, ChevronDown, ExternalLink, Code, Star, U
 import ThemeToggle from './ThemeToggle';
 import Link from 'next/link';
 import MainPageMobileMenu from './MainPageMobileMenu';
-import Image from 'next/image';
 import isaacRufus from '../../assets/rufus.jpg';
+import menuflixer from '../../assets/projects/menuflixer-web.png';
+import dropdeli from '../../assets/projects/dropdeli.png';
+import africaFundMe from '../../assets/projects/afm-landing.png';
+import dumpVideoDownloader from '../../assets/projects/dump-web.png';
+//import convert from '../../assets/convert.png';
 
 interface Project {
   title: string;
@@ -29,51 +33,43 @@ const Portfolio = () => {
   // We'll add more projects for the dedicated projects page
   const projects: Project[] = [
     {
-      title: "E-Commerce Mobile App",
-      description: "A full-featured mobile shopping app built with React Native and Node.js. Includes user authentication, product catalog, shopping cart, and payment integration.",
-      tags: ["React Native", "Node.js", "MongoDB", "Stripe"],
-      demoUrl: "https://demo.example.com/ecommerce",
-      githubUrl: "https://github.com/example/ecommerce",
-      image: "/api/placeholder/600/400"
+      title: "Menuflixer",
+      description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
+      tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
+      demoUrl: "https://menuflixer.vercel.app",
+      githubUrl: "#",
+      image: menuflixer.src
     },
     {
-      title: "Task Management Platform",
-      description: "Web-based project management tool with real-time updates, team collaboration features, and automated workflow capabilities.",
-      tags: ["React", "Firebase", "Material UI", "WebSocket"],
-      demoUrl: "https://demo.example.com/taskmanager",
-      githubUrl: "https://github.com/example/taskmanager",
-      image: "/api/placeholder/600/400"
+      title: "Dropdeli",
+      description: "A modern landing page design for a food delivery platform, showcasing the brand's services and features with a clean, user-friendly interface.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoUrl: "#",
+      githubUrl: "#",
+      image: dropdeli.src
     },
     {
-      title: "Health & Fitness Tracker",
-      description: "Cross-platform mobile application for tracking workouts, nutrition, and health metrics with personalized recommendations.",
-      tags: ["Flutter", "Firebase", "REST API", "Charts"],
-      demoUrl: "https://demo.example.com/fitness",
-      githubUrl: "https://github.com/example/fitness",
-      image: "/api/placeholder/600/400"
+      title: "Africa Fund Me",
+      description: "A loan funding website featuring a professional landing page and ongoing development of web application to power their operations.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoUrl: "https://fund-africa.vercel.app",
+      githubUrl: "#",
+      image: africaFundMe.src
     },
     {
-      title: "Social Media Dashboard",
-      description: "Comprehensive analytics dashboard for tracking social media performance across multiple platforms.",
-      tags: ["Vue.js", "D3.js", "Node.js", "OAuth"],
-      demoUrl: "https://demo.example.com/social-dashboard",
-      githubUrl: "https://github.com/example/social-dashboard",
-      image: "/api/placeholder/600/400"
+      title: "Dump Video Downloader",
+      description: "A comprehensive platform for downloading internet videos, available as both web and mobile applications with advanced features and user-friendly interface.",
+      tags: ["Flutter", "ReactJS", "Python", "RestAPI", "FFMPEG", "Google Play IAP", "Admob"],
+      demoUrl: "https://dumpvideodownloader.com",
+      githubUrl: "#",
+      image: dumpVideoDownloader.src
     },
     {
-      title: "AI-Powered Content Generator",
-      description: "Web application using OpenAI APIs to generate marketing content, blog posts, and social media updates.",
-      tags: ["React", "OpenAI API", "Express", "MongoDB"],
-      demoUrl: "https://demo.example.com/ai-content",
-      githubUrl: "https://github.com/example/ai-content",
-      image: "/api/placeholder/600/400"
-    },
-    {
-      title: "Smart Home IoT Hub",
-      description: "Mobile app and web dashboard to control and monitor IoT devices in a smart home environment.",
-      tags: ["React Native", "IoT", "WebSockets", "GraphQL"],
-      demoUrl: "https://demo.example.com/smart-home",
-      githubUrl: "https://github.com/example/smart-home",
+      title: "Convert",
+      description: "An Android mobile application for live currency exchange, built with modern Android development practices and real-time data integration.",
+      tags: ["Android", "Jetpack Compose", "RESTAPI", "Kotlin"],
+      demoUrl: "#",
+      githubUrl: "#",
       image: "/api/placeholder/600/400"
     }
   ];
@@ -94,24 +90,25 @@ const Portfolio = () => {
   ];
 
   const skills = {
-    frontend: ["React", "React Native", "Flutter", "JavaScript", "TypeScript", "HTML5/CSS3"],
-    backend: ["Node.js", "Python", "Java", "RESTful APIs", "GraphQL"],
+    frontend: ["HTML", "CSS", "JavaScript", "ReactJS", "TailwindCSS", "Shadcn UI", "Framer Motion"],
+    backend: ["NodeJS", "Python", "RestAPI", "Firebase", "MongoDB", "JWT"],
+    mobile: ["Flutter", "Android", "Jetpack Compose"],
+    tools: ["Git", "FFMPEG", "Google Play IAP", "Admob", "Charts", "Payfast"],
     database: ["MongoDB", "PostgreSQL", "Firebase"],
-    tools: ["Git", "Docker", "AWS", "CI/CD", "Agile"]
   };
 
   const experience = [
     {
-      position: "Senior Full Stack Developer",
-      company: "Tech Innovations Inc.",
-      period: "2022 - Present",
-      description: "Led development of multiple web and mobile applications, mentored junior developers, and implemented CI/CD pipelines."
+      position: "Full Stack Developer",
+      company: "Freelance",
+      period: "2023 - Present",
+      description: "Working on various projects including Menuflixer, Dropdeli, Africa Fund Me, and Dump Video Downloader. Handling both frontend and backend development, mobile app development, and project management."
     },
     {
       position: "Mobile App Developer",
-      company: "AppWorks Studio",
-      period: "2020 - 2022",
-      description: "Developed cross-platform mobile applications using React Native and Flutter for various clients in e-commerce and healthcare sectors."
+      company: "Freelance",
+      period: "2022 - 2023",
+      description: "Developed mobile applications including Convert (Android) and Dump Video Downloader (Flutter), focusing on user experience and performance optimization."
     }
   ];
 
@@ -178,6 +175,23 @@ const Portfolio = () => {
     </div>
   );
 
+  // Filter projects based on active tab
+  const filteredProjects = activeTab === 'all' 
+    ? projects 
+    : projects.filter(project => {
+        if (activeTab === 'web') {
+          return project.tags.some(tag => 
+            ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 'JWT', 'Charts', 'Payfast'].includes(tag)
+          );
+        }
+        if (activeTab === 'mobile') {
+          return project.tags.some(tag => 
+            ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag)
+          );
+        }
+        return true;
+      });
+
   // Display only limited projects on main page
   const displayedProjects = isProjectsPage 
     ? projects 
@@ -235,19 +249,59 @@ const Portfolio = () => {
         {/* Hero Content */}
         <div className="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center relative z-10">
           <div className="md:w-1/2 text-left md:pr-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Full Stack Developer</h1>
-            <p className="text-lg md:text-xl mb-8 text-blue-100">
-              Crafting exceptional web and mobile experiences with modern technologies
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contact" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2">
-                <Mail className="w-5 h-5" />
-                Get in Touch
-              </a>
-              <a href="/resume.pdf" className="border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors flex items-center justify-center gap-2">
-                <Download className="w-5 h-5" />
-                Download Resume
-              </a>
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+                Isaac Rufus
+              </h1>
+              <p className="text-xl sm:text-2xl text-white/90 mb-8">
+                Full Stack Developer
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <a
+                  href="https://wa.me/+2348085355192"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.045.073.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 19.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-2.825 2.3-5.121 5.125-5.121 1.367.001 2.651.533 3.619 1.5.968.967 1.501 2.252 1.5 3.619-.001 2.825-2.301 5.121-5.127 5.121z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/oreoluwa-rufus-6b47b3305"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-.88-.018-1.613-.114-2.218-.114-.609-.416-1.022-.847-1.238-.431-.216-.932-.324-1.502-.324-.669 0-1.222.204-1.655.611-.433.407-.65.995-.65 1.765v5.804h-3v-11h3v1.765c.287-.327.596-.581.927-.762.331-.18.689-.27 1.074-.27.527 0 .975.104 1.344.312.369.208.646.495.832.861.186.366.279.799.279 1.299v6.956z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/africantechdotworld"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  GitHub
+                </a>
+              </div>
+              <div className="flex justify-center">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Get in Touch
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
           <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
@@ -367,7 +421,7 @@ const Portfolio = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayedProjects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <ProjectCard key={index} project={project} />
             ))}
           </div>
@@ -485,84 +539,89 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-blue-600 dark:bg-blue-800 text-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">Get in Touch</h2>
-          <div className="w-24 h-1 bg-white mx-auto mb-12 rounded-full"></div>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-              
+      <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h2>
+            <p className="text-gray-600 dark:text-gray-300">Let's work together on your next project</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Contact Information</h3>
               <div className="space-y-4">
-                <a href="mailto:john@example.com" className="flex items-center space-x-4 hover:opacity-80 transition-opacity">
-                  <div className="bg-white/20 p-3 rounded-lg">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <span>john@example.com</span>
-                </a>
-                <a href="tel:+1234567890" className="flex items-center space-x-4 hover:opacity-80 transition-opacity">
-                  <div className="bg-white/20 p-3 rounded-lg">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <span>+1 (234) 567-890</span>
-                </a>
-                <a href="https://github.com" className="flex items-center space-x-4 hover:opacity-80 transition-opacity">
-                  <div className="bg-white/20 p-3 rounded-lg">
-                    <Github className="w-6 h-6" />
-                  </div>
-                  <span>GitHub</span>
-                </a>
-                <a href="https://linkedin.com" className="flex items-center space-x-4 hover:opacity-80 transition-opacity">
-                  <div className="bg-white/20 p-3 rounded-lg">
-                    <Linkedin className="w-6 h-6" />
-                  </div>
-                  <span>LinkedIn</span>
-                </a>
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <a href="mailto:heisrufus@gmail.com" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    heisrufus@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <a href="tel:+2348085355192" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    +234 808 535 5192
+                  </a>
+                </div>
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="text-gray-600 dark:text-gray-300">Lagos, Nigeria</span>
+                </div>
               </div>
             </div>
-            
-            <div className="bg-white text-gray-800 rounded-xl p-8 shadow-lg">
-              <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
-              
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" 
-                    placeholder="Your name" 
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" 
-                    placeholder="your@email.com" 
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea 
-                    id="message" 
-                    rows={4} 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" 
-                    placeholder="Your message"
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit" 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Social Media</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <a
+                  href="https://www.linkedin.com/in/oreoluwa-rufus-6b47b3305"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  Send Message
-                </button>
-              </form>
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-.88-.018-1.613-.114-2.218-.114-.609-.416-1.022-.847-1.238-.431-.216-.932-.324-1.502-.324-.669 0-1.222.204-1.655.611-.433.407-.65.995-.65 1.765v5.804h-3v-11h3v1.765c.287-.327.596-.581.927-.762.331-.18.689-.27 1.074-.27.527 0 .975.104 1.344.312.369.208.646.495.832.861.186.366.279.799.279 1.299v6.956z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+                <a
+                  href="https://www.instagram.com/oreo.software"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  Instagram
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100094227428070"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  Facebook
+                </a>
+                <a
+                  href="https://youtube.com/@heisrufus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  YouTube
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -572,19 +631,34 @@ const Portfolio = () => {
       <footer className="bg-gray-900 dark:bg-black text-white py-8">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
               <h3 className="text-xl font-bold">Isaac Rufus</h3>
               <p className="text-gray-400 mt-1">Full Stack Developer</p>
             </div>
             
             <div className="flex space-x-6">
-              <a href="https://github.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://github.com/africantechdotworld" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/oreoluwa-rufus-6b47b3305" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:john@example.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=100094227428070" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/oreo.software" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://youtube.com/@heisrufus" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="mailto:heisrufus@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -593,7 +667,7 @@ const Portfolio = () => {
           <hr className="border-gray-800 my-6" />
           
           <div className="text-center text-gray-400 text-sm">
-            <p>© 2025 Isaac Rufus. All rights reserved.</p>
+            <p>© 2024 Isaac Rufus. All rights reserved.</p>
             <p className="mt-2">Built with React, Next.js, and Tailwind CSS</p>
           </div>
         </div>
