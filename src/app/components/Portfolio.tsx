@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Github, Linkedin, Mail, Phone, ChevronDown, ExternalLink, Code, Star, User, Briefcase, Download, ArrowRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Link from 'next/link';
+import MainPageMobileMenu from './MainPageMobileMenu';
 
 interface Project {
   title: string;
@@ -187,7 +188,7 @@ const Portfolio = () => {
       {/* Header/Hero Section */}
       <header className="relative bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-800 dark:to-indigo-900 text-white overflow-hidden">
         {/* Decorative Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full" style={{
             backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 2px)',
             backgroundSize: '30px 30px'
@@ -195,8 +196,8 @@ const Portfolio = () => {
         </div>
         
         {/* Navigation */}
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center relative z-10">
-          <span className="text-xl font-bold">John Developer</span>
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center relative z-20">
+          <span className="text-xl font-bold">Isaac Rufus</span>
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex space-x-6">
               <a href="#about" className="hover:text-blue-200 transition-colors relative group">
@@ -221,6 +222,7 @@ const Portfolio = () => {
               </a>
             </div>
             <ThemeToggle />
+            <MainPageMobileMenu />
           </div>
         </nav>
         
@@ -249,7 +251,7 @@ const Portfolio = () => {
               <div className="absolute inset-8 rounded-full overflow-hidden">
                 <img 
                   src="/api/placeholder/400/400" 
-                  alt="John Developer" 
+                  alt="Isaac Rufus" 
                   className="w-full h-full object-cover" 
                 />
               </div>
@@ -270,7 +272,7 @@ const Portfolio = () => {
 
       {/* About Section */}
       <section id="about" className="py-20 container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-4 dark:text-white">About Me</h2>
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">About Me</h2>
         <div className="w-24 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-12 rounded-full"></div>
         
         <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg relative overflow-hidden">
@@ -327,8 +329,8 @@ const Portfolio = () => {
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4 dark:text-white">Featured Projects</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-12 rounded-full"></div>
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">Featured Projects</h2>
+          <div className="w-24 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-12 rounded-full"></div>
           
           {/* Project Filters */}
           <div className="flex justify-center mb-12">
@@ -380,8 +382,8 @@ const Portfolio = () => {
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-100 dark:bg-indigo-900/20 rounded-full opacity-50"></div>
         
         <div className="relative z-10">
-          <h2 className="text-3xl font-bold text-center mb-4 dark:text-white">Technical Skills</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-12 rounded-full"></div>
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">Technical Skills</h2>
+          <div className="w-24 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-12 rounded-full"></div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {Object.entries(skills).map(([category, skillList]) => (
@@ -407,7 +409,7 @@ const Portfolio = () => {
       {/* Experience Section */}
       <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4 dark:text-white">Work Experience</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">Work Experience</h2>
           <div className="w-24 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-12 rounded-full"></div>
           
           <div className="max-w-3xl mx-auto">
@@ -437,7 +439,7 @@ const Portfolio = () => {
 
       {/* Testimonials Section */}
       <section className="py-20 container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-4 dark:text-white">Client Testimonials</h2>
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white">Client Testimonials</h2>
         <div className="w-24 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-12 rounded-full"></div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -553,7 +555,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold">John Developer</h3>
+              <h3 className="text-xl font-bold">Isaac Rufus</h3>
               <p className="text-gray-400 mt-1">Full Stack Developer</p>
             </div>
             
@@ -573,7 +575,7 @@ const Portfolio = () => {
           <hr className="border-gray-800 my-6" />
           
           <div className="text-center text-gray-400 text-sm">
-            <p>© 2025 John Developer. All rights reserved.</p>
+            <p>© 2025 Isaac Rufus. All rights reserved.</p>
             <p className="mt-2">Built with React, Next.js, and Tailwind CSS</p>
           </div>
         </div>

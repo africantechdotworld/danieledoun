@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Github, ExternalLink, ArrowLeft, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
+import MobileMenu from './MobileMenu';
 
 interface Project {
   title: string;
@@ -170,7 +171,7 @@ const ProjectsPage = () => {
       <header className="bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-800 dark:to-indigo-900 text-white">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" passHref>
-            <span className="text-xl font-bold">John Developer</span>
+            <span className="text-xl font-bold">Isaac Rufus</span>
           </Link>
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex space-x-6">
@@ -180,6 +181,7 @@ const ProjectsPage = () => {
               <Link href="/#contact" className="hover:text-blue-200 transition-colors">Contact</Link>
             </div>
             <ThemeToggle />
+            <MobileMenu isMainPage={false} />
           </div>
         </nav>
         
@@ -239,7 +241,7 @@ const ProjectsPage = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold">John Developer</h3>
+              <h3 className="text-xl font-bold">Isaac Rufus</h3>
               <p className="text-gray-400 mt-1">Full Stack Developer</p>
             </div>
             
@@ -259,7 +261,7 @@ const ProjectsPage = () => {
           <hr className="border-gray-800 my-6" />
           
           <div className="text-center text-gray-400 text-sm">
-            <p>© 2025 John Developer. All rights reserved.</p>
+            <p>© 2025 Isaac Rufus. All rights reserved.</p>
             <p className="mt-2">Built with React, Next.js, and Tailwind CSS</p>
           </div>
         </div>
