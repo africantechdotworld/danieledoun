@@ -5,6 +5,8 @@ import { Github, Linkedin, Mail, Phone, ChevronDown, ExternalLink, Code, Star, U
 import ThemeToggle from './ThemeToggle';
 import Link from 'next/link';
 import MainPageMobileMenu from './MainPageMobileMenu';
+import Image from 'next/image';
+import isaacRufus from '../../assets/rufus.jpg';
 
 interface Project {
   title: string;
@@ -121,6 +123,10 @@ const Portfolio = () => {
           src={project.image} 
           alt={project.title} 
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
           <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
@@ -250,9 +256,13 @@ const Portfolio = () => {
               <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-600 shadow-lg"></div>
               <div className="absolute inset-8 rounded-full overflow-hidden">
                 <img 
-                  src="/api/placeholder/400/400" 
+                  src={isaacRufus.src} 
                   alt="Isaac Rufus" 
-                  className="w-full h-full object-cover" 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://placehold.co/400x400/2563eb/ffffff?text=Rufus';
+                  }}
                 />
               </div>
             </div>
@@ -281,7 +291,7 @@ const Portfolio = () => {
           
           <div className="relative z-10 flex flex-col md:flex-row gap-8">
             <div className="md:w-1/3">
-              <h3 className="text-xl font-semibold mb-4 dark:text-white flex items-center gap-2">
+              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                 <User className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 Who I Am
               </h3>
@@ -299,25 +309,25 @@ const Portfolio = () => {
             </div>
             
             <div className="md:w-2/3">
-              <h3 className="text-xl font-semibold mb-4 dark:text-white flex items-center gap-2">
+              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                 <Star className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 What I Do
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-4 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow bg-white dark:bg-gray-700">
-                  <h4 className="font-medium mb-2 dark:text-white">Web Development</h4>
+                  <h4 className="font-medium mb-2 text-gray-900 dark:text-white">Web Development</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Building responsive, accessible websites and web applications using modern frameworks.</p>
                 </div>
                 <div className="p-4 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow bg-white dark:bg-gray-700">
-                  <h4 className="font-medium mb-2 dark:text-white">Mobile App Development</h4>
+                  <h4 className="font-medium mb-2 text-gray-900 dark:text-white">Mobile App Development</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Creating cross-platform mobile applications with React Native and Flutter.</p>
                 </div>
                 <div className="p-4 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow bg-white dark:bg-gray-700">
-                  <h4 className="font-medium mb-2 dark:text-white">Backend Development</h4>
+                  <h4 className="font-medium mb-2 text-gray-900 dark:text-white">Backend Development</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Designing and implementing scalable APIs and server architectures.</p>
                 </div>
                 <div className="p-4 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow bg-white dark:bg-gray-700">
-                  <h4 className="font-medium mb-2 dark:text-white">UI/UX Design</h4>
+                  <h4 className="font-medium mb-2 text-gray-900 dark:text-white">UI/UX Design</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">Creating intuitive user interfaces and seamless user experiences.</p>
                 </div>
               </div>
@@ -388,7 +398,7 @@ const Portfolio = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {Object.entries(skills).map(([category, skillList]) => (
               <div key={category} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transform transition-transform hover:-translate-y-2">
-                <h3 className="text-xl font-semibold mb-6 capitalize dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">{category}</h3>
+                <h3 className="text-xl font-semibold mb-6 capitalize text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">{category}</h3>
                 <ul className="space-y-3">
                   {skillList.map((skill: string, index: number) => (
                     <li key={index} className="flex items-center text-gray-700 dark:text-gray-300">
@@ -422,10 +432,10 @@ const Portfolio = () => {
                 {/* Content */}
                 <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 ml-4">
                   <div className="flex flex-wrap justify-between items-center mb-4">
-                    <h3 className="text-xl font-semibold dark:text-white">{job.position}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{job.position}</h3>
                     <span className="text-blue-600 dark:text-blue-400 font-medium text-sm px-3 py-1 bg-blue-100 dark:bg-blue-900/40 rounded-full">{job.period}</span>
                   </div>
-                  <h4 className="text-gray-700 dark:text-gray-300 font-medium mb-4 flex items-center gap-2">
+                  <h4 className="text-gray-900 dark:text-gray-300 font-medium mb-4 flex items-center gap-2">
                     <Briefcase className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     {job.company}
                   </h4>
@@ -455,7 +465,15 @@ const Portfolio = () => {
               <p className="text-gray-600 dark:text-gray-300 mb-6 z-10 relative">"{testimonial.content}"</p>
               
               <div className="flex items-center">
-                <img src={testimonial.avatar} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
+                <img 
+                  src={testimonial.avatar} 
+                  alt={testimonial.name} 
+                  className="w-12 h-12 rounded-full mr-4"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = `https://placehold.co/48x48/2563eb/ffffff?text=${testimonial.name.charAt(0)}`;
+                  }}
+                />
                 <div>
                   <h4 className="font-semibold dark:text-white">{testimonial.name}</h4>
                   <p className="text-gray-500 dark:text-gray-400 text-sm">{testimonial.position}</p>

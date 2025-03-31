@@ -114,6 +114,10 @@ const ProjectsPage = () => {
           src={project.image} 
           alt={project.title} 
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
           <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
