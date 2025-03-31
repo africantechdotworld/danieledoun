@@ -10,7 +10,7 @@ import menuflixer from '../../assets/projects/menuflixer-web.png';
 import dropdeli from '../../assets/projects/dropdeli.png';
 import africaFundMe from '../../assets/projects/afm-landing.png';
 import dumpVideoDownloader from '../../assets/projects/dump-web.png';
-//import convert from '../../assets/convert.png';
+import convert from '../../assets/projects/convert.svg';
 
 interface Project {
   title: string;
@@ -43,7 +43,7 @@ const Portfolio = () => {
     {
       title: "Dropdeli",
       description: "A modern landing page design for a food delivery platform, showcasing the brand's services and features with a clean, user-friendly interface.",
-      tags: ["HTML", "CSS", "JavaScript"],
+      tags: ["HTML", "CSS", "JavaScript", "NodeJs", "CSS Animation"],
       demoUrl: "#",
       githubUrl: "#",
       image: dropdeli.src
@@ -51,7 +51,7 @@ const Portfolio = () => {
     {
       title: "Africa Fund Me",
       description: "A loan funding website featuring a professional landing page and ongoing development of web application to power their operations.",
-      tags: ["HTML", "CSS", "JavaScript"],
+      tags: ["HTML", "CSS", "JavaScript", "NodeJs", "CSS Animation"],
       demoUrl: "https://fund-africa.vercel.app",
       githubUrl: "#",
       image: africaFundMe.src
@@ -70,21 +70,33 @@ const Portfolio = () => {
       tags: ["Android", "Jetpack Compose", "RESTAPI", "Kotlin"],
       demoUrl: "#",
       githubUrl: "#",
-      image: "/api/placeholder/600/400"
+      image: convert.src
     }
   ];
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      position: "CTO, TechVentures",
-      content: "John delivered our project on time and exceeded our expectations. His attention to detail and problem-solving skills are exceptional.",
+      name: "Pham",
+      position: "Web Platform Client",
+      content: "Isaac delivered an exceptional web platform that transformed our business operations. His attention to detail and technical expertise in building scalable solutions was impressive. The platform's performance and user experience exceeded our expectations.",
       avatar: "/api/placeholder/80/80"
     },
     {
-      name: "Michael Chen",
-      position: "Founder, StartupHub",
-      content: "Working with John was a pleasure. He understood our vision and transformed it into a beautiful, functional application that our users love.",
+      name: "Mathew",
+      position: "ThreeJS Web App Client",
+      content: "Working with Isaac on our ThreeJS web application was a great experience. He demonstrated strong expertise in 3D web technologies and delivered a visually stunning, performant application. His ability to balance aesthetics with functionality was remarkable.",
+      avatar: "/api/placeholder/80/80"
+    },
+    {
+      name: "Imade",
+      position: "Mobile App Client",
+      content: "Isaac's work on our mobile application was outstanding. He built a robust, user-friendly app that perfectly met our requirements. His expertise in mobile development and attention to user experience made our app stand out in the market.",
+      avatar: "/api/placeholder/80/80"
+    },
+    {
+      name: "Rams",
+      position: "CEO, Menuflixer",
+      content: "Isaac developed our full-stack digital menu management platform with exceptional skill. The QR code scanning feature and payment integration have revolutionized how we serve our customers. His expertise in both frontend and backend development delivered a seamless experience for both our staff and customers.",
       avatar: "/api/placeholder/80/80"
     }
   ];
@@ -529,7 +541,7 @@ const Portfolio = () => {
                   }}
                 />
                 <div>
-                  <h4 className="font-semibold dark:text-white">{testimonial.name}</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</h4>
                   <p className="text-gray-500 dark:text-gray-400 text-sm">{testimonial.position}</p>
                 </div>
               </div>
