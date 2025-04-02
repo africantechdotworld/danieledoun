@@ -641,7 +641,7 @@ const Portfolio = () => {
           <hr className="border-gray-800 my-6" />
           
           <div className="text-center text-gray-400 text-sm">
-            <p>© 2024 Isaac Rufus. All rights reserved.</p>
+            <p>© 2025 Isaac Rufus. All rights reserved.</p>
             <p className="mt-2">Built with React, Next.js, and Tailwind CSS</p>
           </div>
         </div>
