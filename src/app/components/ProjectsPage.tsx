@@ -5,24 +5,9 @@ import { Github, ExternalLink, ArrowLeft, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import MobileMenu from './MobileMenu';
-import menuflixer from '../../assets/projects/menuflixer-web.png';
-import dropdeli from '../../assets/projects/dropdeli.png';
-import africaFundMe from '../../assets/projects/afm-landing.png';
-import dumpVideoDownloader from '../../assets/projects/dump-web.png';
-import convert from '../../assets/projects/convert.svg';
 import ImagePreviewModal from './ImagePreviewModal';
 import Image from 'next/image';
-
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  demoUrl?: string;  // Optional
-  githubUrl?: string;  // Optional
-  image: string;
-  buttonType?: 'demo' | 'download' | 'none';  // New field to determine button type
-  buttonText?: string;  // Custom button text
-}
+import { Project, projects, filterProjectsByTag } from '../../data/projects';
 
 // Define the ProjectCard component outside the main component
 const ProjectCard: React.FC<{
@@ -30,56 +15,46 @@ const ProjectCard: React.FC<{
   onImageClick: (url: string, title: string) => void;
 }> = ({ project, onImageClick }) => (
   <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-      {/* Image with Overlay */}
+    {/* Image with Overlay */}
     <div 
       className="relative h-48 overflow-hidden cursor-pointer"
       onClick={() => onImageClick(project.image, project.title)}
     >
       <Image
-          src={project.image} 
-          alt={project.title} 
+        src={project.image} 
+        alt={project.title} 
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-110"
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
         }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-          <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-            {project.title}
-          </h3>
-        </div>
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+        <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+          {project.title}
+        </h3>
       </div>
+    </div>
 
-      {/* Content */}
-        <div className="flex flex-col flex-grow p-6">
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
-            {project.description}
-          </p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((tag: string, tagIndex: number) => (
-                <span 
-                  key={tagIndex} 
-                  className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+    {/* Content */}
+    <div className="flex flex-col flex-grow p-6">
+      <p className="text-gray-600 dark:text-gray-300 mb-4">
+        {project.description}
+      </p>
+      <div className="flex flex-wrap gap-2 mb-6">
+        {project.tags.map((tag: string, tagIndex: number) => (
+          <span 
+            key={tagIndex} 
+            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
       <div className="flex flex-wrap gap-4 mt-auto">
-        {project.buttonType === 'demo' && (
-            <a 
-              href={project.demoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </a>
-        )}
-        {project.buttonType === 'download' && (
+        {/* Primary Button (Demo/Download) */}
+        {project.buttonType !== 'none' && project.demoUrl && (
           <a 
             href={project.demoUrl} 
             target="_blank" 
@@ -87,91 +62,37 @@ const ProjectCard: React.FC<{
             className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
           >
             <ExternalLink className="w-4 h-4" />
-            {project.buttonText}
+            {project.buttonText || (project.buttonType === 'download' ? 'Download App' : 'Live Demo')}
           </a>
         )}
+        
         {/* GitHub Button */}
         {project.githubUrl && (
-            <a 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              Code
-            </a>
+          <a 
+            href={project.githubUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            <Github className="w-4 h-4" />
+            Code
+          </a>
         )}
       </div>
-      </div>
     </div>
-  );
+  </div>
+);
 
 const ProjectsPage = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
 
-  const projects: Project[] = [
-    {
-      title: "Menuflixer",
-      description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
-      tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
-      demoUrl: "https://menuflixer.vercel.app",
-      image: menuflixer.src,
-      buttonType: 'demo'
-    },
-    {
-      title: "Dropdeli",
-      description: "A modern landing page design for a food delivery platform, showcasing the brand's services and features with a clean, user-friendly interface.",
-      tags: ["HTML", "CSS", "JavaScript"],
-      demoUrl: "#",
-      image: dropdeli.src,
-      buttonType: 'demo'  // No buttons for this project
-    },
-    {
-      title: "Africa Fund Me",
-      description: "A loan funding website featuring a professional landing page and ongoing development of web application to power their operations.",
-      tags: ["HTML", "CSS", "JavaScript"],
-      demoUrl: "https://fund-africa.vercel.app",
-      image: africaFundMe.src,
-      buttonType: 'demo'
-    },
-    {
-      title: "Dump Video Downloader",
-      description: "A comprehensive platform for downloading internet videos, available as both web and mobile applications with advanced features and user-friendly interface.",
-      tags: ["Flutter", "ReactJS", "Python", "RestAPI", "FFMPEG", "Google Play IAP", "Admob"],
-      demoUrl: "https://dumpvideodownloader.com",
-      image: dumpVideoDownloader.src,
-      buttonType: 'demo',
-      buttonText: 'Download App'
-    },
-    {
-      title: "Convert",
-      description: "An Android mobile application for live currency exchange, built with modern Android development practices and real-time data integration.",
-      tags: ["Android", "Jetpack Compose", "RESTAPI"],
-      demoUrl: "#",
-      githubUrl: "#",
-      image: convert.src,
-      buttonType: 'none',
-    }
-  ];
-
   // Filter projects based on active tab
-  const filteredProjects = activeTab === 'all' 
-    ? projects 
-    : projects.filter(project => {
-        if (activeTab === 'web') {
-          return project.tags.some(tag => 
-            ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 'JWT', 'Charts', 'Payfast'].includes(tag)
-          );
-        }
-        if (activeTab === 'mobile') {
-          return project.tags.some(tag => 
-            ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag)
-          );
-        }
-        return true;
-      });
+  const filteredProjects = filterProjectsByTag(projects, activeTab);
+
+  // Count projects in each category for the filter buttons
+  const webProjectsCount = filterProjectsByTag(projects, 'web').length;
+  const mobileProjectsCount = filterProjectsByTag(projects, 'mobile').length;
 
   const handleImageClick = (url: string, title: string) => {
     setSelectedImage({ url, title });
@@ -230,13 +151,13 @@ const ProjectsPage = () => {
               onClick={() => setActiveTab('web')} 
               className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'web' ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'}`}
             >
-              Web ({projects.filter(p => p.tags.some(tag => ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 'JWT', 'Charts', 'Payfast'].includes(tag))).length})
+              Web ({webProjectsCount})
             </button>
             <button 
               onClick={() => setActiveTab('mobile')} 
               className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'mobile' ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'}`}
             >
-              Mobile ({projects.filter(p => p.tags.some(tag => ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag))).length})
+              Mobile ({mobileProjectsCount})
             </button>
           </div>
         </div>
