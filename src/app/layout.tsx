@@ -14,8 +14,45 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Developer Portfolio',
-  description: 'Full Stack Developer Portfolio',
+  title: 'Isaac Rufus - Full Stack Developer',
+  description: 'Portfolio website showcasing my work as a Full Stack Developer specializing in web and mobile development.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'android-chrome',
+        url: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        rel: 'android-chrome',
+        url: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  themeColor: '#2563eb',
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
+  keywords: ['Full Stack Developer', 'Web Development', 'Mobile Development', 'React', 'Node.js', 'Flutter', 'Android'],
+  authors: [{ name: 'Isaac Rufus' }],
+  creator: 'Isaac Rufus',
+  publisher: 'Isaac Rufus',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
 }
 
 export default function RootLayout({
@@ -28,8 +65,8 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider 
           attribute="class" 
-          defaultTheme="system" 
-          enableSystem
+          defaultTheme="dark" 
+          enableSystem={false}
         >
           {children}
         </ThemeProvider>

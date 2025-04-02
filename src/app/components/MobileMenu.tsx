@@ -36,22 +36,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isMainPage = true }) => {
     };
   }, [isOpen]);
 
-  // Handle section scrolling for main page
-  const handleSectionClick = (sectionId: string) => {
-    setIsOpen(false);
-    
-    // Only apply this on the main page, not the projects page
-    if (isMainPage) {
-      // Small delay to ensure the menu closes first
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  };
-
   return (
     <div className="md:hidden">
       {/* Toggle Button */}

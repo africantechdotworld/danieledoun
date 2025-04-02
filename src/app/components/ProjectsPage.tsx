@@ -1,26 +1,115 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Github, ExternalLink, ArrowLeft, Linkedin, Mail } from 'lucide-react';
+import { Github, ExternalLink, ArrowLeft, Linkedin, Mail, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import MobileMenu from './MobileMenu';
+import menuflixer from '../../assets/projects/menuflixer-web.png';
+import dropdeli from '../../assets/projects/dropdeli.png';
+import africaFundMe from '../../assets/projects/afm-landing.png';
+import dumpVideoDownloader from '../../assets/projects/dump-web.png';
+import convert from '../../assets/projects/convert.svg';
+import ImagePreviewModal from './ImagePreviewModal';
+import Image from 'next/image';
 
 interface Project {
   title: string;
   description: string;
   tags: string[];
-  demoUrl: string;
-  githubUrl: string;
+  demoUrl?: string;  // Optional
+  githubUrl?: string;  // Optional
   image: string;
+  buttonType?: 'demo' | 'download' | 'none';  // New field to determine button type
+  buttonText?: string;  // Custom button text
 }
 
-interface ProjectCardProps {
+// Define the ProjectCard component outside the main component
+const ProjectCard: React.FC<{
   project: Project;
-}
+  onImageClick: (url: string, title: string) => void;
+}> = ({ project, onImageClick }) => (
+  <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+    {/* Image with Overlay */}
+    <div 
+      className="relative h-48 overflow-hidden cursor-pointer"
+      onClick={() => onImageClick(project.image, project.title)}
+    >
+      <Image
+        src={project.image} 
+        alt={project.title} 
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+        <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+          {project.title}
+        </h3>
+      </div>
+    </div>
+
+    {/* Content */}
+    <div className="flex flex-col flex-grow p-6">
+      <p className="text-gray-600 dark:text-gray-300 mb-4">
+        {project.description}
+      </p>
+      <div className="flex flex-wrap gap-2 mb-6">
+        {project.tags.map((tag: string, tagIndex: number) => (
+          <span 
+            key={tagIndex} 
+            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-4 mt-auto">
+        {project.buttonType === 'demo' && (
+          <a 
+            href={project.demoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Live Demo
+          </a>
+        )}
+        {project.buttonType === 'download' && (
+          <a 
+            href={project.demoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            <ExternalLink className="w-4 h-4" />
+            {project.buttonText}
+          </a>
+        )}
+        {/* GitHub Button */}
+        {project.githubUrl && (
+          <a 
+            href={project.githubUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            <Github className="w-4 h-4" />
+            Code
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+);
 
 const ProjectsPage = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
 
   const projects: Project[] = [
     {
@@ -28,32 +117,33 @@ const ProjectsPage = () => {
       description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
       tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
       demoUrl: "https://menuflixer.vercel.app",
-      githubUrl: "#",
-      image: "/api/placeholder/600/400"
+      image: menuflixer.src,
+      buttonType: 'demo'
     },
     {
       title: "Dropdeli",
       description: "A modern landing page design for a food delivery platform, showcasing the brand's services and features with a clean, user-friendly interface.",
       tags: ["HTML", "CSS", "JavaScript"],
       demoUrl: "#",
-      githubUrl: "#",
-      image: "/api/placeholder/600/400"
+      image: dropdeli.src,
+      buttonType: 'demo'  // No buttons for this project
     },
     {
       title: "Africa Fund Me",
       description: "A loan funding website featuring a professional landing page and ongoing development of web application to power their operations.",
       tags: ["HTML", "CSS", "JavaScript"],
       demoUrl: "https://fund-africa.vercel.app",
-      githubUrl: "#",
-      image: "/api/placeholder/600/400"
+      image: africaFundMe.src,
+      buttonType: 'demo'
     },
     {
       title: "Dump Video Downloader",
       description: "A comprehensive platform for downloading internet videos, available as both web and mobile applications with advanced features and user-friendly interface.",
       tags: ["Flutter", "ReactJS", "Python", "RestAPI", "FFMPEG", "Google Play IAP", "Admob"],
       demoUrl: "https://dumpvideodownloader.com",
-      githubUrl: "#",
-      image: "/api/placeholder/600/400"
+      image: dumpVideoDownloader.src,
+      buttonType: 'demo',
+      buttonText: 'Download App'
     },
     {
       title: "Convert",
@@ -61,7 +151,8 @@ const ProjectsPage = () => {
       tags: ["Android", "Jetpack Compose", "RESTAPI"],
       demoUrl: "#",
       githubUrl: "#",
-      image: "/api/placeholder/600/400"
+      image: convert.src,
+      buttonType: 'none',
     }
   ];
 
@@ -82,68 +173,9 @@ const ProjectsPage = () => {
         return true;
       });
 
-  const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
-    <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
-      {/* Image with Overlay */}
-      <div className="relative h-48 overflow-hidden">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-          <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-            {project.title}
-          </h3>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col h-full">
-        <div className="flex flex-col flex-grow p-6">
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
-            {project.description}
-          </p>
-          <div className="flex-grow">
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((tag: string, tagIndex: number) => (
-                <span 
-                  key={tagIndex} 
-                  className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <a 
-              href={project.demoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </a>
-            <a 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              Code
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  const handleImageClick = (url: string, title: string) => {
+    setSelectedImage({ url, title });
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 transition-colors duration-300">
@@ -211,10 +243,23 @@ const ProjectsPage = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <ProjectCard 
+              key={index} 
+              project={project} 
+              onImageClick={handleImageClick}
+            />
           ))}
         </div>
       </section>
+
+      {/* Image Preview Modal */}
+      {selectedImage && (
+        <ImagePreviewModal
+          imageUrl={selectedImage.url}
+          title={selectedImage.title}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
 
       {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black text-white py-8 mt-20">

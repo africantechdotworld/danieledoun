@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Phone, ChevronDown, ExternalLink, Code, Star, User, Briefcase, Download, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Star, User, Briefcase, ArrowRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Link from 'next/link';
 import MainPageMobileMenu from './MainPageMobileMenu';
@@ -11,24 +11,98 @@ import dropdeli from '../../assets/projects/dropdeli.png';
 import africaFundMe from '../../assets/projects/afm-landing.png';
 import dumpVideoDownloader from '../../assets/projects/dump-web.png';
 import convert from '../../assets/projects/convert.svg';
+import ImagePreviewModal from './ImagePreviewModal';
+import Image from 'next/image';
 
 interface Project {
   title: string;
   description: string;
   tags: string[];
-  demoUrl: string;
-  githubUrl: string;
+  demoUrl?: string;  // Optional
+  githubUrl?: string;  // Optional
   image: string;
+  buttonType?: 'demo' | 'download' | 'none';  // New field to determine button type
+  buttonText?: string;  // Custom button text
 }
 
-interface ProjectCardProps {
+// Define the ProjectCard component outside the main component
+const ProjectCard: React.FC<{
   project: Project;
-}
+  onImageClick: (url: string, title: string) => void;
+}> = ({ project, onImageClick }) => (
+  <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+    {/* Image with Overlay */}
+    <div 
+      className="relative h-48 overflow-hidden cursor-pointer"
+      onClick={() => onImageClick(project.image, project.title)}
+    >
+      <Image
+        src={project.image} 
+        alt={project.title} 
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+        <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+          {project.title}
+        </h3>
+      </div>
+    </div>
+
+    {/* Content */}
+    <div className="flex flex-col flex-grow p-6">
+      <p className="text-gray-600 dark:text-gray-300 mb-4">
+        {project.description}
+      </p>
+      <div className="flex flex-wrap gap-2 mb-6">
+        {project.tags.map((tag: string, tagIndex: number) => (
+          <span 
+            key={tagIndex} 
+            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-4 mt-auto">
+        {/* Primary Button (Demo/Download) */}
+        {project.buttonType !== 'none' && project.demoUrl && (
+          <a 
+            href={project.demoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            <ExternalLink className="w-4 h-4" />
+            {project.buttonText || (project.buttonType === 'download' ? 'Download App' : 'Live Demo')}
+          </a>
+        )}
+        
+        {/* GitHub Button */}
+        {project.githubUrl && (
+          <a 
+            href={project.githubUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            <Github className="w-4 h-4" />
+            Code
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+);
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('all');
-  // Determine if we're on the projects page
   const [isProjectsPage, setIsProjectsPage] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
   
   // We'll add more projects for the dedicated projects page
   const projects: Project[] = [
@@ -37,40 +111,41 @@ const Portfolio = () => {
       description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
       tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
       demoUrl: "https://menuflixer.vercel.app",
-      githubUrl: "#",
-      image: menuflixer.src
+      image: menuflixer.src,
+      buttonType: 'demo'
     },
     {
       title: "Dropdeli",
       description: "A modern landing page design for a food delivery platform, showcasing the brand's services and features with a clean, user-friendly interface.",
-      tags: ["HTML", "CSS", "JavaScript", "NodeJs", "CSS Animation"],
+      tags: ["HTML", "CSS", "JavaScript"],
       demoUrl: "#",
-      githubUrl: "#",
-      image: dropdeli.src
+      image: dropdeli.src,
+      buttonType: 'demo'  // No buttons for this project
     },
     {
       title: "Africa Fund Me",
       description: "A loan funding website featuring a professional landing page and ongoing development of web application to power their operations.",
-      tags: ["HTML", "CSS", "JavaScript", "NodeJs", "CSS Animation"],
+      tags: ["HTML", "CSS", "JavaScript"],
       demoUrl: "https://fund-africa.vercel.app",
-      githubUrl: "#",
-      image: africaFundMe.src
+      image: africaFundMe.src,
+      buttonType: 'demo'
     },
     {
       title: "Dump Video Downloader",
       description: "A comprehensive platform for downloading internet videos, available as both web and mobile applications with advanced features and user-friendly interface.",
       tags: ["Flutter", "ReactJS", "Python", "RestAPI", "FFMPEG", "Google Play IAP", "Admob"],
       demoUrl: "https://dumpvideodownloader.com",
-      githubUrl: "#",
-      image: dumpVideoDownloader.src
+      image: dumpVideoDownloader.src,
+      buttonType: 'demo',
     },
     {
       title: "Convert",
       description: "An Android mobile application for live currency exchange, built with modern Android development practices and real-time data integration.",
-      tags: ["Android", "Jetpack Compose", "RESTAPI", "Kotlin"],
+      tags: ["Android", "Jetpack Compose", "RESTAPI"],
       demoUrl: "#",
       githubUrl: "#",
-      image: convert.src
+      image: convert.src,
+      buttonType: 'none',
     }
   ];
 
@@ -90,7 +165,7 @@ const Portfolio = () => {
     {
       name: "Imade",
       position: "Mobile App Client",
-      content: "Isaac's work on our mobile application was outstanding. He built a robust, user-friendly app that perfectly met our requirements. His expertise in mobile development and attention to user experience made our app stand out in the market.",
+      content: "Isaac&apos;s expertise in mobile development is exceptional. He delivered a robust and user-friendly mobile application that exceeded our expectations. His attention to detail and commitment to user experience made all the difference.",
       avatar: "/api/placeholder/80/80"
     },
     {
@@ -124,96 +199,36 @@ const Portfolio = () => {
     }
   ];
 
-  const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
-    <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
-      {/* Image with Overlay */}
-      <div className="relative h-48 overflow-hidden">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-          <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-            {project.title}
-          </h3>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col h-full">
-        <div className="flex flex-col flex-grow p-6">
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
-            {project.description}
-          </p>
-          <div className="flex-grow">
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((tag: string, tagIndex: number) => (
-                <span 
-                  key={tagIndex} 
-                  className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <a 
-              href={project.demoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </a>
-            <a 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              Code
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
   // Filter projects based on active tab
-  const filteredProjects = activeTab === 'all' 
-    ? projects 
-    : projects.filter(project => {
-        if (activeTab === 'web') {
-          return project.tags.some(tag => 
-            ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 'JWT', 'Charts', 'Payfast'].includes(tag)
-          );
-        }
-        if (activeTab === 'mobile') {
-          return project.tags.some(tag => 
-            ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag)
-          );
-        }
-        return true;
-      });
+  const filteredProjects = projects.filter(project => {
+    if (activeTab === 'all') return true;
+    if (activeTab === 'web') {
+      return project.tags.some(tag => 
+        ['ReactJS', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python', 'RestAPI', 
+         'Firebase', 'MongoDB', 'TailwindCSS', 'Shadcn UI', 'Framer Motion', 
+         'JWT', 'Charts', 'Payfast'].includes(tag)
+      );
+    }
+    if (activeTab === 'mobile') {
+      return project.tags.some(tag => 
+        ['Flutter', 'Android', 'Jetpack Compose', 'Google Play IAP', 'Admob'].includes(tag)
+      );
+    }
+    return true;
+  });
 
   // Display only limited projects on main page
-  const displayedProjects = isProjectsPage 
-    ? projects 
-    : projects.slice(0, 3);
+  const displayedProjects = projects.slice(0, 3);
 
   // Effect to check if we're on the projects page
   React.useEffect(() => {
     // Simple check for current path - modify based on your routing structure
     setIsProjectsPage(window.location.pathname.includes('/projects'));
   }, []);
+
+  const handleImageClick = (url: string, title: string) => {
+    setSelectedImage({ url, title });
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 transition-colors duration-300">
@@ -308,11 +323,11 @@ const Portfolio = () => {
                   href="#contact"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  Get in Touch
+                Get in Touch
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+              </a>
               </div>
             </div>
           </div>
@@ -321,10 +336,12 @@ const Portfolio = () => {
               <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm"></div>
               <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-600 shadow-lg"></div>
               <div className="absolute inset-8 rounded-full overflow-hidden">
-                <img 
+                <Image 
                   src={isaacRufus.src} 
                   alt="Isaac Rufus" 
-                  className="w-full h-full object-cover"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover" 
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = 'https://placehold.co/400x400/2563eb/ffffff?text=Rufus';
@@ -434,7 +451,11 @@ const Portfolio = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
+              <ProjectCard 
+                key={index} 
+                project={project} 
+                onImageClick={handleImageClick}
+              />
             ))}
           </div>
           
@@ -451,6 +472,15 @@ const Portfolio = () => {
           )}
         </div>
       </section>
+
+      {/* Image Preview Modal */}
+      {selectedImage && (
+        <ImagePreviewModal
+          imageUrl={selectedImage.url}
+          title={selectedImage.title}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
 
       {/* Skills Section */}
       <section id="skills" className="py-20 container mx-auto px-6 relative overflow-hidden">
@@ -471,7 +501,12 @@ const Portfolio = () => {
                       <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
                       <span className="font-medium">{skill}</span>
                       <div className="ml-auto w-24 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-600 rounded-full" style={{ width: `${Math.random() * 40 + 60}%` }}></div>
+                        <div 
+                          className="h-full bg-blue-600 rounded-full" 
+                          style={{ 
+                            width: `${(index % 5) * 20 + 60}%` // This will give us values: 60%, 80%, 100%, 80%, 60%
+                          }}
+                        ></div>
                       </div>
                     </li>
                   ))}
@@ -528,12 +563,14 @@ const Portfolio = () => {
                 </svg>
               </div>
               
-              <p className="text-gray-600 dark:text-gray-300 mb-6 z-10 relative">"{testimonial.content}"</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 z-10 relative">&ldquo;{testimonial.content}&rdquo;</p>
               
               <div className="flex items-center">
-                <img 
+                <Image 
                   src={testimonial.avatar} 
                   alt={testimonial.name} 
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full mr-4"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
@@ -585,7 +622,7 @@ const Portfolio = () => {
                   <span className="text-gray-600 dark:text-gray-300">Lagos, Nigeria</span>
                 </div>
               </div>
-            </div>
+                  </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Social Media</h3>
               <div className="grid grid-cols-2 gap-4">
