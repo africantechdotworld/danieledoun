@@ -217,9 +217,6 @@ const Portfolio = () => {
     return true;
   });
 
-  // Display only limited projects on main page
-  const displayedProjects = projects.slice(0, 3);
-
   // Effect to check if we're on the projects page
   React.useEffect(() => {
     // Simple check for current path - modify based on your routing structure
@@ -327,7 +324,7 @@ const Portfolio = () => {
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-              </a>
+                </a>
               </div>
             </div>
           </div>
@@ -592,7 +589,9 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h2>
-            <p className="text-gray-600 dark:text-gray-300">Let's work together on your next project</p>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">
+              Let&apos;s work together on your next project
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
@@ -622,7 +621,7 @@ const Portfolio = () => {
                   <span className="text-gray-600 dark:text-gray-300">Lagos, Nigeria</span>
                 </div>
               </div>
-                  </div>
+            </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Social Media</h3>
               <div className="grid grid-cols-2 gap-4">

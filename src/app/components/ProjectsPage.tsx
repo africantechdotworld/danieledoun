@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Github, ExternalLink, ArrowLeft, Linkedin, Mail, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowLeft, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import MobileMenu from './MobileMenu';
