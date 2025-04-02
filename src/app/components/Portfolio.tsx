@@ -31,73 +31,73 @@ const ProjectCard: React.FC<{
   onImageClick: (url: string, title: string) => void;
 }> = ({ project, onImageClick }) => (
   <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-    {/* Image with Overlay */}
+      {/* Image with Overlay */}
     <div 
       className="relative h-48 overflow-hidden cursor-pointer"
       onClick={() => onImageClick(project.image, project.title)}
     >
       <Image
-        src={project.image} 
-        alt={project.title} 
+          src={project.image} 
+          alt={project.title} 
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-110"
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
         }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-        <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-          {project.title}
-        </h3>
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+          <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+            {project.title}
+          </h3>
+        </div>
       </div>
-    </div>
 
-    {/* Content */}
-    <div className="flex flex-col flex-grow p-6">
-      <p className="text-gray-600 dark:text-gray-300 mb-4">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-2 mb-6">
-        {project.tags.map((tag: string, tagIndex: number) => (
-          <span 
-            key={tagIndex} 
-            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      {/* Content */}
+        <div className="flex flex-col flex-grow p-6">
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            {project.description}
+          </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag: string, tagIndex: number) => (
+                <span 
+                  key={tagIndex} 
+                  className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
       <div className="flex flex-wrap gap-4 mt-auto">
         {/* Primary Button (Demo/Download) */}
         {project.buttonType !== 'none' && project.demoUrl && (
-          <a 
-            href={project.demoUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" />
+            <a 
+              href={project.demoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              <ExternalLink className="w-4 h-4" />
             {project.buttonText || (project.buttonType === 'download' ? 'Download App' : 'Live Demo')}
-          </a>
+            </a>
         )}
         
         {/* GitHub Button */}
         {project.githubUrl && (
-          <a 
-            href={project.githubUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
-          >
-            <Github className="w-4 h-4" />
-            Code
-          </a>
+            <a 
+              href={project.githubUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              <Github className="w-4 h-4" />
+              Code
+            </a>
         )}
       </div>
+      </div>
     </div>
-  </div>
-);
+  );
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -153,26 +153,22 @@ const Portfolio = () => {
     {
       name: "Pham",
       position: "Web Platform Client",
-      content: "Isaac delivered an exceptional web platform that transformed our business operations. His attention to detail and technical expertise in building scalable solutions was impressive. The platform's performance and user experience exceeded our expectations.",
-      avatar: "/api/placeholder/80/80"
+      content: "Isaac delivered an exceptional web platform that transformed our business operations. His attention to detail and technical expertise in building scalable solutions was impressive. The platform's performance and user experience exceeded our expectations."
     },
     {
       name: "Mathew",
       position: "ThreeJS Web App Client",
-      content: "Working with Isaac on our ThreeJS web application was a great experience. He demonstrated strong expertise in 3D web technologies and delivered a visually stunning, performant application. His ability to balance aesthetics with functionality was remarkable.",
-      avatar: "/api/placeholder/80/80"
+      content: "Working with Isaac on our ThreeJS web application was a great experience. He demonstrated strong expertise in 3D web technologies and delivered a visually stunning, performant application. His ability to balance aesthetics with functionality was remarkable."
     },
     {
       name: "Imade",
       position: "Mobile App Client",
-      content: "Isaac&apos;s expertise in mobile development is exceptional. He delivered a robust and user-friendly mobile application that exceeded our expectations. His attention to detail and commitment to user experience made all the difference.",
-      avatar: "/api/placeholder/80/80"
+      content: "Isaac expertise in mobile development is exceptional. He delivered a robust and user-friendly mobile application that exceeded our expectations. His attention to detail and commitment to user experience made all the difference."
     },
     {
       name: "Rams",
       position: "CEO, Menuflixer",
-      content: "Isaac developed our full-stack digital menu management platform with exceptional skill. The QR code scanning feature and payment integration have revolutionized how we serve our customers. His expertise in both frontend and backend development delivered a seamless experience for both our staff and customers.",
-      avatar: "/api/placeholder/80/80"
+      content: "Isaac developed our full-stack digital menu management platform with exceptional skill. The QR code scanning feature and payment integration have enabled our partner restaurants and dining establishments to revolutionize how they serve customers. His expertise in both frontend and backend development delivered a seamless experience for both restaurant staff and their customers."
     }
   ];
 
@@ -194,7 +190,7 @@ const Portfolio = () => {
     {
       position: "Mobile App Developer",
       company: "Freelance",
-      period: "2022 - 2023",
+      period: "2021 - Present",
       description: "Developed mobile applications including Convert (Android) and Dump Video Downloader (Flutter), focusing on user experience and performance optimization."
     }
   ];
@@ -324,7 +320,7 @@ const Portfolio = () => {
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+              </a>
               </div>
             </div>
           </div>
@@ -551,36 +547,41 @@ const Portfolio = () => {
         <div className="w-24 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-12 rounded-full"></div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 relative">
-              {/* Quote Mark */}
-              <div className="absolute top-4 right-4 text-blue-100 dark:text-blue-900/40">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                  <path d="M11 9.275C11 13.076 8.599 16.962 5 18v-2c2.052-0.8 3.104-2.753 3.137-4.93h-3.137v-6.07h6v5.275zM22 9.275C22 13.076 19.599 16.962 16 18v-2c2.052-0.8 3.104-2.753 3.137-4.93h-3.137v-6.07h6v5.275z"/>
-                </svg>
-              </div>
-              
-              <p className="text-gray-600 dark:text-gray-300 mb-6 z-10 relative">&ldquo;{testimonial.content}&rdquo;</p>
-              
-              <div className="flex items-center">
-                <Image 
-                  src={testimonial.avatar} 
-                  alt={testimonial.name} 
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full mr-4"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://placehold.co/48x48/2563eb/ffffff?text=${testimonial.name.charAt(0)}`;
-                  }}
-                />
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</h4>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">{testimonial.position}</p>
+          {testimonials.map((testimonial, index) => {
+            // Create different background colors for each avatar
+            const bgColors = [
+              'bg-blue-600',
+              'bg-indigo-600',
+              'bg-purple-600',
+              'bg-pink-600'
+            ];
+            const bgColor = bgColors[index % bgColors.length];
+            
+            return (
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 relative flex flex-col h-full">
+                {/* Quote Mark */}
+                <div className="absolute top-4 right-4 text-blue-100 dark:text-blue-900/40">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                    <path d="M11 9.275C11 13.076 8.599 16.962 5 18v-2c2.052-0.8 3.104-2.753 3.137-4.93h-3.137v-6.07h6v5.275zM22 9.275C22 13.076 19.599 16.962 16 18v-2c2.052-0.8 3.104-2.753 3.137-4.93h-3.137v-6.07h6v5.275z"/>
+                  </svg>
+                </div>
+                
+                <p className="text-gray-600 dark:text-gray-300 mb-6 z-10 relative flex-grow">&ldquo;{testimonial.content}&rdquo;</p>
+                
+                <div className="flex items-center mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <div 
+                    className={`w-12 h-12 rounded-full mr-4 ${bgColor} overflow-hidden flex-shrink-0 flex items-center justify-center text-white font-bold`}
+                  >
+                    {testimonial.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</h4>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">{testimonial.position}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -589,7 +590,7 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Let&apos;s work together on your next project
             </p>
           </div>
@@ -621,7 +622,7 @@ const Portfolio = () => {
                   <span className="text-gray-600 dark:text-gray-300">Lagos, Nigeria</span>
                 </div>
               </div>
-            </div>
+                  </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Social Media</h3>
               <div className="grid grid-cols-2 gap-4">

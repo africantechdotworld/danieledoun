@@ -30,54 +30,54 @@ const ProjectCard: React.FC<{
   onImageClick: (url: string, title: string) => void;
 }> = ({ project, onImageClick }) => (
   <div className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-    {/* Image with Overlay */}
+      {/* Image with Overlay */}
     <div 
       className="relative h-48 overflow-hidden cursor-pointer"
       onClick={() => onImageClick(project.image, project.title)}
     >
       <Image
-        src={project.image} 
-        alt={project.title} 
+          src={project.image} 
+          alt={project.title} 
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-110"
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           target.src = `https://placehold.co/600x400/2563eb/ffffff?text=${project.title.replace(/\s+/g, '+')}`;
         }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-        <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-          {project.title}
-        </h3>
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+          <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+            {project.title}
+          </h3>
+        </div>
       </div>
-    </div>
 
-    {/* Content */}
-    <div className="flex flex-col flex-grow p-6">
-      <p className="text-gray-600 dark:text-gray-300 mb-4">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-2 mb-6">
-        {project.tags.map((tag: string, tagIndex: number) => (
-          <span 
-            key={tagIndex} 
-            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      {/* Content */}
+        <div className="flex flex-col flex-grow p-6">
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            {project.description}
+          </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag: string, tagIndex: number) => (
+                <span 
+                  key={tagIndex} 
+                  className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-sm px-3 py-1 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
       <div className="flex flex-wrap gap-4 mt-auto">
         {project.buttonType === 'demo' && (
-          <a 
-            href={project.demoUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Live Demo
-          </a>
+            <a 
+              href={project.demoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Live Demo
+            </a>
         )}
         {project.buttonType === 'download' && (
           <a 
@@ -92,20 +92,20 @@ const ProjectCard: React.FC<{
         )}
         {/* GitHub Button */}
         {project.githubUrl && (
-          <a 
-            href={project.githubUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
-          >
-            <Github className="w-4 h-4" />
-            Code
-          </a>
+            <a 
+              href={project.githubUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              <Github className="w-4 h-4" />
+              Code
+            </a>
         )}
       </div>
+      </div>
     </div>
-  </div>
-);
+  );
 
 const ProjectsPage = () => {
   const [activeTab, setActiveTab] = useState('all');
