@@ -25,6 +25,14 @@ export const projects: Project[] = [
     buttonType: 'demo'
   },
   {
+    title: "Justin Homes",
+    description: "A modern real estate website showcasing property listings, search functionality, and property management features. Built with responsive design and user-friendly interface for home buyers and sellers.",
+    tags: ["React", "Next.js", "TailwindCSS", "Real Estate", "Property Management"],
+    demoUrl: "https://justinhomes.vercel.app",
+    image: "/justinhomes.png", // You'll add the image path here
+    buttonType: 'demo'
+  },
+  {
     title: "Menuflixer",
     description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
     tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
