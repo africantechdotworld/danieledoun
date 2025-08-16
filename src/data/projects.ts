@@ -41,6 +41,14 @@ export const projects: Project[] = [
     buttonType: 'demo'
   },
   {
+    title: "MEG Deals",
+    description: "A deals and offers platform for Tanzania featuring exclusive 2-for-1 deals on restaurants, hotels, and experiences. Includes waitlist management, partner establishment listings, deal categories, and mobile app preparation for iOS and Android platforms.",
+    tags: ["Deals Platform", "Waitlist Management", "Partner Management", "Mobile App", "Tanzania Market"],
+    demoUrl: "https://meg-landing.vercel.app",
+    image: "/megdeals.png", // You'll add the image path here
+    buttonType: 'demo'
+  },
+  {
     title: "Menuflixer",
     description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
     tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
