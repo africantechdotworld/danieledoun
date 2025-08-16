@@ -17,6 +17,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "HumanlyGPT",
+    description: "A comprehensive AI-powered business platform featuring intelligent chatbots, AI assistants, CRM tools, appointment scheduling systems, payment collection, email automation, and advanced analytics dashboard. Built as a full-stack solution for businesses to automate and enhance their customer interactions.",
+    tags: ["React", "Express", "TailwindCSS", "PostgreSQL", "Prisma", "PayPal", "Stripe", "Google Calendar API", "Zoom API", "AI/ML", "Full-Stack"],
+    demoUrl: "https://humanlygpt.com",
+    image: "/humanlygpt.png", // You'll add the image path here
+    buttonType: 'demo'
+  },
+  {
     title: "Menuflixer",
     description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
     tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
