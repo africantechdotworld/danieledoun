@@ -33,6 +33,14 @@ export const projects: Project[] = [
     buttonType: 'demo'
   },
   {
+    title: "LD Copilot",
+    description: "An AI-powered copilot platform designed to assist users with various tasks and workflows. Features intelligent automation, user assistance, and streamlined processes to enhance productivity and user experience.",
+    tags: ["AI/ML", "Copilot", "Automation", "User Assistance"],
+    demoUrl: "https://ldcopilot.com",
+    image: "/ldcopilot.png", // You'll add the image path here
+    buttonType: 'demo'
+  },
+  {
     title: "Menuflixer",
     description: "A full-fledged digital food menu management platform with separate web apps for restaurant operations and customer menu browsing. Features include QR code scanning, menu management dashboard, and payment integration.",
     tags: ["ReactJs", "NodeJs", "RestAPI", "Firebase", "MongoDb", "TailwindCSS", "Shadcn UI", "Framer Motion", "Payfast", "JWT", "Charts"],
