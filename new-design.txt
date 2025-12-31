@@ -1,0 +1,52 @@
+I want to redesign my developer portfolio website with a premium, modern, and professional 2026 look that attracts high-paying clients and top employers.
+The current UI feels childish and outdated. I want a look and feel inspired by Apple, Stripe, and Figma UI — clean typography, elegant spacing, bold visuals, and a minimalist premium aesthetic.
+
+Design Goals:
+
+Homepage:
+Showcase a neat marketplace-style grid of my featured projects with high-quality previews (minimal but striking).
+Instead of a basic list, make the project cards look like a curated portfolio marketplace (think Apple product grids or Stripe’s feature showcases).
+Include concise, bold hero header, tagline, and call-to-action (Hire / Contact).
+
+Projects Section:
+A dedicated “All Projects” page with filters (e.g., Web, Mobile, UI/UX, AI).
+Each project card should have hover animations and brief metadata (Stack, Year, Role).
+
+Project Details Page:
+Each project should have its own dedicated page with visuals, code links, deployment link, and key highlights.
+Modern case-study feel with clean layout and readable typography.
+
+Navigation & UI:
+Fixed top nav, simple icons, premium spacing, subtle motion UI where appropriate.
+Apple-like elegance in typography and alignment (strong focus on clarity and visual hierarchy).
+
+Typography & Colors:
+Consider neutral palette (white, light gray, dark gray) with accent color for CTAs (brand color).
+Elegant fonts (similar to San Francisco/Neue or other modern font families).
+
+Deliverables:
+• Updated React/Next.js UI components for each section — homepage, all projects page, project details page, navigation.
+• Provide corresponding HTML/CSS/JS or Tailwind/Sass structure.
+• Use screenshot references of the preferred designs I will attach.
+
+
+
+
+✅ Layout Rules
+✔ Use lots of whitespace
+✔ Strong visual hierarchy
+✔ Centered clean navigation
+✔ Minimal and elegant icons
+✔ Smooth hover interactions
+✅ Typography
+✔ Sans-serif modern font (e.g SF Pro, Neue)
+✔ Bold headings, light body text
+✔ Consistent scaling (H1 >> H2 >> H3)
+✅ Color Palette
+✔ Light neutral background (white / off-white)
+✔ Dark text for clarity
+✔ Single accent color (for buttons and links)
+UX Interactions
+✔ Subtle hover animations on cards
+✔ Smooth transitions
+✔ Lazy loading for images

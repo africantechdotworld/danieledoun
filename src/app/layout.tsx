@@ -1,16 +1,18 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
+import { Providers } from './providers'
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
-  title: 'Isaac Rufus - Full Stack Developer',
-  description: 'Full Stack Developer specializing in React, Node.js, and mobile development. View my portfolio of web and mobile applications.',
+  title: 'Isaac Rufus | Full Stack Developer',
+  description: 'Premium software development and digital experiences by Isaac Rufus. Specializing in high-performance web and mobile solutions.',
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#0066cc',
 }
 
 export default function RootLayout({
@@ -19,9 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className={`${poppins.className} antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
-// File: app/projects/page.tsx
-import ProjectsPage from "../components/ProjectsPage";
+'use client';
+
+import AllProjectsPage from '../components/AllProjectsPage';
 
 export default function Projects() {
-  return <ProjectsPage />;
+  return <AllProjectsPage />;
 }
