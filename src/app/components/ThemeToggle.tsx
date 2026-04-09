@@ -1,7 +1,7 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { Sun, Moon } from 'lucide-react'
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
 export default function ThemeToggle() {
@@ -20,7 +20,7 @@ export default function ThemeToggle() {
       className="p-2 rounded-full hover:bg-white/10 transition-colors"
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {theme === 'dark' ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
     </button>
   )
 }

@@ -2,21 +2,25 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { cn } from './utils';
 import ThemeToggle from './ThemeToggle';
+import { useLanguage } from '../contexts/LanguageContext';
 
-const navItems = [
-    { name: 'Projects', href: '#projects' },
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
+const getNavItems = (t: (key: string) => string) => [
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.experience'), href: '#experience' },
+    { name: t('nav.contact'), href: '#contact' },
 ];
 
 export default function Navbar() {
+    const { language, setLanguage, t } = useLanguage();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
+    const navItems = getNavItems(t);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,7 +42,7 @@ export default function Navbar() {
                     href="/"
                     className="text-xl font-bold tracking-tight hover:opacity-70 transition-opacity"
                 >
-                    Isaac Rufus
+                    Daniel EDOUN
                 </Link>
 
                 {/* Desktop Nav */}
@@ -54,6 +58,26 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </div>
+                    <div className="flex items-center gap-2 mr-2">
+                        <button 
+                            onClick={() => setLanguage('en')}
+                            className={cn(
+                                "text-xs font-bold px-2 py-1 rounded-md transition-all",
+                                language === 'en' ? "bg-accent text-white" : "text-muted-foreground hover:text-foreground"
+                            )}
+                        >
+                            EN
+                        </button>
+                        <button 
+                            onClick={() => setLanguage('fr')}
+                            className={cn(
+                                "text-xs font-bold px-2 py-1 rounded-md transition-all",
+                                language === 'fr' ? "bg-accent text-white" : "text-muted-foreground hover:text-foreground"
+                            )}
+                        >
+                            FR
+                        </button>
+                    </div>
                     <div className="h-4 w-[1px] bg-border mx-2" />
                     <div className="flex items-center gap-4">
                         <ThemeToggle />
@@ -61,20 +85,39 @@ export default function Navbar() {
                             href="#contact"
                             className="bg-foreground text-background px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
                         >
-                            Hire Me
-                            <ArrowUpRight className="w-3.5 h-3.5" />
+                            {t('nav.hire')}
                         </a>
                     </div>
                 </div>
 
                 {/* Mobile Toggle */}
-                <div className="flex md:hidden items-center gap-4">
+                <div className="flex md:hidden items-center gap-3">
+                    <div className="flex items-center gap-1 bg-muted/50 p-1 rounded-lg">
+                        <button 
+                            onClick={() => setLanguage('en')}
+                            className={cn(
+                                "text-[10px] font-bold px-2 py-1 rounded-md transition-all",
+                                language === 'en' ? "bg-background shadow-sm" : "opacity-50"
+                            )}
+                        >
+                            EN
+                        </button>
+                        <button 
+                            onClick={() => setLanguage('fr')}
+                            className={cn(
+                                "text-[10px] font-bold px-2 py-1 rounded-md transition-all",
+                                language === 'fr' ? "bg-background shadow-sm" : "opacity-50"
+                            )}
+                        >
+                            FR
+                        </button>
+                    </div>
                     <ThemeToggle />
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         className="p-2 hover:bg-muted rounded-full transition-colors"
                     >
-                        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                        {mobileMenuOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
                     </button>
                 </div>
             </div>
@@ -104,7 +147,7 @@ export default function Navbar() {
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="mt-2 bg-foreground text-background p-4 rounded-2xl text-center font-medium"
                             >
-                                Hire Me
+                                {t('nav.hire')}
                             </a>
                         </div>
                     </motion.div>

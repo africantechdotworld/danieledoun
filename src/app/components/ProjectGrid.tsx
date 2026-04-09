@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { Project } from '../../data/projects';
 import { cn } from './utils';
 
@@ -45,7 +45,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             <div className="relative z-10 text-white">
                 <div className="flex flex-wrap gap-2 mb-3">
                     {project.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-white/10 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
+                        <span key={tag} className="text-[10px] font-bold tracking-wider bg-white/10 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
                             {tag}
                         </span>
                     ))}
@@ -63,7 +63,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
                         href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                         className="w-12 h-12 rounded-full glass border border-white/20 flex items-center justify-center hover:scale-110 transition-transform"
                     >
-                        <ArrowUpRight className="w-5 h-5 text-white" />
+                        <ArrowUpRightIcon className="w-5 h-5 text-white" />
                     </Link>
                 </div>
             </div>

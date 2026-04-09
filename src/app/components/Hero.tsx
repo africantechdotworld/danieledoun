@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Hero() {
+    const { t } = useLanguage();
     return (
         <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-20 overflow-hidden">
             {/* Background decoration */}
@@ -19,17 +21,15 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider uppercase bg-muted rounded-full">
-                        Available for new opportunities
+                    <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider bg-muted rounded-full">
+                        {t('hero.badge')}
                     </span>
                     <h1 className="hero-text mb-8">
-                        Designing Digital <br />
-                        <span className="text-muted-foreground">Experiences that Matter.</span>
+                        {t('hero.title.line1')} <br />
+                        <span className="text-muted-foreground">{t('hero.title.line2')}</span>
                     </h1>
                     <p className="sub-text mx-auto mb-10">
-                        Isaac Rufus — A Full Stack Developer dedicated to building
-                        high-performance web and mobile solutions with premium aesthetics
-                        and seamless user experiences.
+                        {t('hero.description')}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -37,13 +37,13 @@ export default function Hero() {
                             href="#projects"
                             className="w-full sm:w-auto px-8 py-4 bg-foreground text-background rounded-full font-semibold hover:opacity-90 transition-opacity"
                         >
-                            View Projects
+                            {t('hero.viewProjects')}
                         </a>
                         <a
                             href="#contact"
                             className="w-full sm:w-auto px-8 py-4 bg-muted hover:bg-muted/80 rounded-full font-semibold transition-colors"
                         >
-                            Contact Me
+                            {t('hero.contactMe')}
                         </a>
                     </div>
                 </motion.div>
@@ -56,8 +56,8 @@ export default function Hero() {
                 className="absolute bottom-10 left-1/2 -translate-x-1/2"
             >
                 <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                    <span className="text-xs uppercase tracking-widest font-bold">Scroll</span>
-                    <ArrowDown className="w-4 h-4 animate-bounce" />
+                    <span className="text-xs tracking-widest font-bold">{t('hero.scroll')}</span>
+                    <ArrowDownIcon className="w-4 h-4 animate-bounce" />
                 </div>
             </motion.div>
         </section>

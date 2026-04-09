@@ -9,9 +9,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Isaac Rufus | Full Stack Developer',
-  description: 'Premium software development and digital experiences by Isaac Rufus. Specializing in high-performance web and mobile solutions.',
-  viewport: 'width=device-width, initial-scale=1',
+  title: 'Daniel EDOUN | Full Stack Developer',
+  description: 'Premium software development and digital experiences by Daniel EDOUN. Specializing in high-performance web and mobile solutions.',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: '#0066cc',
 }
 
