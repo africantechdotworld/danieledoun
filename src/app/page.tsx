@@ -8,11 +8,11 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import { projects } from '../data/projects';
 import Link from 'next/link';
-import { useLanguage } from './contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 
 export default function Home() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const featuredProjects = projects.slice(0, 4);
 
   const workHistory = [

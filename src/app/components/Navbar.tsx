@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { cn } from './utils';
 import ThemeToggle from './ThemeToggle';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const getNavItems = (t: (key: string) => string) => [
     { name: t('nav.projects'), href: '#projects' },

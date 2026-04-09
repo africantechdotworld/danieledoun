@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { DevicePhoneMobileIcon, CircleStackIcon, SwatchIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const skills = [
     {

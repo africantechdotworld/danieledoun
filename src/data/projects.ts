@@ -1,4 +1,4 @@
-import borec from '../assets/projects/borec.png';
+// Project data configurations
 
 export interface Project {
   title: string;

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeftIcon, GlobeAltIcon, CommandLineIcon, CalendarDateRangeIcon, UserIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { useLanguage } from '../contexts/LanguageContext';
+import { ChevronLeftIcon, CommandLineIcon, CalendarDateRangeIcon, UserIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { useLanguage } from '../../contexts/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Project } from '../../data/projects';
