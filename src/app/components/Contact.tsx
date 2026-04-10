@@ -15,28 +15,28 @@ export default function Contact() {
     return (
         <section id="contact" className="py-16 md:py-24">
             <div className="container mx-auto px-4 sm:px-6">
-                <div className="bg-foreground text-background rounded-3xl md:rounded-[48px] p-6 sm:p-10 md:p-16 overflow-hidden relative">
+                <div className="bg-background dark:bg-zinc-900 text-foreground rounded-3xl md:rounded-[48px] p-6 sm:p-10 md:p-16 overflow-hidden relative border border-border/50 shadow-xl shadow-black/5">
                     {/* Decorative gradients */}
-                    <div className="absolute top-0 right-0 w-[60%] h-[100%] bg-accent/20 blur-[120px] pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-[60%] h-[100%] bg-accent/10 blur-[120px] pointer-events-none" />
 
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div>
                             <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight">
                                 {t('contact.title.line1')} <br className="hidden sm:block" />
-                                <span className="text-muted-foreground/50">{t('contact.title.line2')}</span>
+                                <span className="text-muted-foreground/60">{t('contact.title.line2')}</span>
                             </h2>
                             <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
-                                <a href="mailto:danieldevelopper9@gmail.com" className="group flex items-center gap-3 sm:gap-4 text-lg sm:text-xl md:text-2xl font-medium hover:text-accent transition-colors break-all">
-                                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:border-accent transition-colors">
+                                <a href="mailto:danieldevelopper9@gmail.com" className="group flex items-center gap-3 sm:gap-4 text-base sm:text-lg md:text-xl font-medium hover:text-accent transition-colors">
+                                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
                                         <EnvelopeIcon className="w-5 h-5" />
                                     </div>
-                                    danieldevelopper9@gmail.com
+                                    <span className="whitespace-nowrap overflow-hidden text-ellipsis">danieldevelopper9@gmail.com</span>
                                 </a>
-                                <a href="tel:+2290149037744" className="group flex items-center gap-3 sm:gap-4 text-lg sm:text-xl md:text-2xl font-medium hover:text-accent transition-colors">
-                                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:border-accent transition-colors">
+                                <a href="tel:+2290149037744" className="group flex items-center gap-3 sm:gap-4 text-base sm:text-lg md:text-xl font-medium hover:text-accent transition-colors">
+                                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
                                         <PhoneIcon className="w-5 h-5" />
                                     </div>
-                                    +229 014 903 7744
+                                    <span className="whitespace-nowrap">+229 014 903 7744</span>
                                 </a>
                             </div>
 
@@ -49,30 +49,32 @@ export default function Contact() {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-muted hover:bg-accent hover:text-white flex items-center justify-center transition-all shadow-sm"
                                         aria-label={social.label}
                                     >
-                                        {social.icon}
+                                        <div className="w-5 h-5">
+                                            {social.icon}
+                                        </div>
                                     </motion.a>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="bg-background/5 border border-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl sm:rounded-3xl">
+                        <div className="bg-muted/50 border border-border/50 backdrop-blur-md p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-inner">
                             <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                                     <div className="space-y-1.5 md:space-y-2">
-                                        <label className="text-sm font-medium text-white/70">{t('contact.label.name')}</label>
-                                        <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base" placeholder={t('contact.placeholder.name')} />
+                                        <label className="text-sm font-medium text-muted-foreground">{t('contact.label.name')}</label>
+                                        <input type="text" className="w-full bg-background border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all text-sm sm:text-base shadow-sm" placeholder={t('contact.placeholder.name')} />
                                     </div>
                                     <div className="space-y-1.5 md:space-y-2">
-                                        <label className="text-sm font-medium text-white/70">{t('contact.label.email')}</label>
-                                        <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base" placeholder={t('contact.placeholder.email')} />
+                                        <label className="text-sm font-medium text-muted-foreground">{t('contact.label.email')}</label>
+                                        <input type="email" className="w-full bg-background border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all text-sm sm:text-base shadow-sm" placeholder={t('contact.placeholder.email')} />
                                     </div>
                                 </div>
                                 <div className="space-y-1.5 md:space-y-2">
-                                    <label className="text-sm font-medium text-white/70">{t('contact.label.project')}</label>
-                                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none text-sm sm:text-base" placeholder={t('contact.placeholder.project')} />
+                                    <label className="text-sm font-medium text-muted-foreground">{t('contact.label.project')}</label>
+                                    <textarea rows={4} className="w-full bg-background border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none text-sm sm:text-base shadow-sm" placeholder={t('contact.placeholder.project')} />
                                 </div>
                                 <button type="submit" className="w-full bg-accent text-white py-3.5 sm:py-4 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-accent/20 active:scale-[0.98]">
                                     {t('contact.send')}
