@@ -2,11 +2,10 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'en' | 'fr';
+type Language = 'en';
 
 interface LanguageContextType {
   language: Language;
-  setLanguage: (lang: Language) => void;
   t: (key: string) => string;
 }
 
@@ -84,102 +83,16 @@ export const translations: Record<Language, Record<string, string>> = {
     'exp.software.company': 'Portfolio Projects',
     'exp.software.period': '2024 — Present',
     'exp.software.desc': 'Worked on multiple web development projects, including Borec, GLD-Cart, and NovumDesk, contributing to the design and implementation of scalable applications.'
-  },
-  fr: {
-    // Nav
-    'nav.projects': 'Projets',
-    'nav.about': 'À propos',
-    'nav.experience': 'Expérience',
-    'nav.contact': 'Contact',
-    'nav.hire': 'Engagez-moi',
-    
-    // Hero
-    'hero.badge': 'Disponible pour de nouvelles opportunités',
-    'hero.title.line1': 'Concevoir des Expériences',
-    'hero.title.line2': 'Numériques qui Comptent.',
-    'hero.description': 'Daniel EDOUN — Un Développeur Logiciel dédié à la création de solutions web et mobiles haute performance avec une esthétique premium et des expériences utilisateur fluides.',
-    'hero.viewProjects': 'Voir les Projets',
-    'hero.contactMe': 'Contactez-moi',
-    'hero.scroll': 'Défiler',
-    
-    // Marketplace
-    'marketplace.title': 'Marketplace',
-    'marketplace.description': 'Une sélection de mes travaux les plus impactants, des applications web haute performance aux solutions mobiles innovantes.',
-    'marketplace.browseAll': 'Parcourir tous les projets',
-    
-    // Technical Prowess
-    'skills.title': 'Prouesse Technique',
-    'skills.description': 'Combiner des technologies de pointe avec un design réfléchi pour fournir des solutions numériques robustes.',
-    'skills.exp': 'Ans exp.',
-    'skills.projects': 'Projets',
-    
-    // Experience
-    'experience.title': 'Historique de Travail',
-    
-    // Contact
-    'contact.title.line1': 'Prêt à commencer votre',
-    'contact.title.line2': 'prochain grand projet ?',
-    'contact.label.name': 'Quel est votre nom ?',
-    'contact.placeholder.name': 'Entrez votre nom',
-    'contact.label.email': 'Adresse e-mail',
-    'contact.placeholder.email': 'nom@entreprise.com',
-    'contact.label.project': 'Parlez-moi de votre projet',
-    'contact.placeholder.project': 'Construisons quelque chose d’incroyable...',
-    'contact.send': 'Envoyer le Message',
-    
-    // Footer
-    'footer.builtWith': 'Construit avec précision.',
-    'footer.home': 'Accueil',
-    'footer.email': 'E-mail',
-
-    // All Projects Page
-    'allProjects.title': 'Portfolio Complet',
-    'allProjects.description': 'Explorez ma collection de produits numériques, d’expérimentations et de projets professionnels réalisés entre 2021 et 2026.',
-    'allProjects.search': 'Rechercher des projets...',
-    'allProjects.showing': 'Affichage de {count} résultats',
-    'allProjects.sortBy': 'Trier par : Plus récent',
-    'allProjects.noProjects': 'Aucun projet trouvé.',
-    'allProjects.adjustFilters': 'Essayez d’ajuster vos filtres ou votre requête de recherche.',
-
-    // Project Details
-    'project.back': 'Retour au Portfolio',
-    'project.visit': 'Visiter le Site Web',
-    'project.viewCode': 'Voir le Code',
-    'project.role': 'Rôle',
-    'project.year': 'Année',
-    'project.tech': 'Tech',
-    'project.overview': 'Aperçu du Projet',
-    'project.features': 'Caractéristiques Clés',
-
-    // New Experience translations
-    'exp.software.role': 'Développeur Logiciel',
-    'exp.software.company': 'Projets de Portfolio',
-    'exp.software.period': '2024 — Présent',
-    'exp.software.desc': 'Travail sur plusieurs projets de développement web, dont Borec, GLD-Cart et NovumDesk, contribuant à la conception et à la mise en œuvre d’applications évolutives.'
   }
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem('language') as Language;
-    if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
-      setLanguage(savedLang);
-    }
-  }, []);
-
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem('language', lang);
-  };
-
   const t = (key: string) => {
-    return translations[language][key] || key;
+    return translations['en'][key] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <LanguageContext.Provider value={{ language: 'en', t }}>
       {children}
     </LanguageContext.Provider>
   );

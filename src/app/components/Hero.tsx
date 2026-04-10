@@ -8,7 +8,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 export default function Hero() {
     const { t } = useLanguage();
     return (
-        <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-20 overflow-hidden">
+        <section className="relative min-h-[100svh] flex flex-col items-center justify-center pt-28 pb-20 overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100 dark:bg-blue-900/10 rounded-full blur-[120px]" />
@@ -24,24 +24,24 @@ export default function Hero() {
                     <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider bg-muted rounded-full">
                         {t('hero.badge')}
                     </span>
-                    <h1 className="hero-text mb-8">
+                    <h1 className="hero-text text-4xl sm:text-5xl md:text-7xl mb-6 md:mb-8 leading-[1.1]">
                         {t('hero.title.line1')} <br />
                         <span className="text-muted-foreground">{t('hero.title.line2')}</span>
                     </h1>
-                    <p className="sub-text mx-auto mb-10">
+                    <p className="sub-text text-base sm:text-lg md:text-xl mx-auto mb-10 max-w-2xl">
                         {t('hero.description')}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a
                             href="#projects"
-                            className="w-full sm:w-auto px-8 py-4 bg-foreground text-background rounded-full font-semibold hover:opacity-90 transition-opacity"
+                            className="w-full sm:w-auto px-8 py-4 bg-foreground text-background rounded-full font-semibold hover:opacity-90 transition-all active:scale-95"
                         >
                             {t('hero.viewProjects')}
                         </a>
                         <a
                             href="#contact"
-                            className="w-full sm:w-auto px-8 py-4 bg-muted hover:bg-muted/80 rounded-full font-semibold transition-colors"
+                            className="w-full sm:w-auto px-8 py-4 bg-muted hover:bg-muted/80 rounded-full font-semibold transition-all active:scale-95"
                         >
                             {t('hero.contactMe')}
                         </a>
@@ -53,12 +53,10 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground pointer-events-none"
             >
-                <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                    <span className="text-xs tracking-widest font-bold">{t('hero.scroll')}</span>
-                    <ArrowDownIcon className="w-4 h-4 animate-bounce" />
-                </div>
+                <span className="text-xs tracking-widest font-bold uppercase">{t('hero.scroll')}</span>
+                <ArrowDownIcon className="w-4 h-4 animate-bounce" />
             </motion.div>
         </section>
     );

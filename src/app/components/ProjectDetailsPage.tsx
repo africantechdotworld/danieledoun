@@ -30,31 +30,31 @@ export default function ProjectDetailsPage({ project }: ProjectDetailsPageProps)
                 </Link>
 
                 {/* Hero Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start mb-16 md:mb-24">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="flex flex-wrap gap-2 mb-6 text-[10px] font-bold tracking-widest text-accent">
+                        <div className="flex flex-wrap gap-2 mb-6 text-[10px] font-bold tracking-widest text-accent uppercase">
                             {project.tags.map(tag => (
                                 <span key={tag} className="bg-accent/5 px-2 py-1 rounded-md border border-accent/10">
                                     {tag}
                                 </span>
                             ))}
                         </div>
-                        <h1 className="text-4xl md:text-7xl font-bold mb-8 tracking-tight">{project.title}</h1>
-                        <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed text-balance">
+                        <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-6 md:mb-8 tracking-tight">{project.title}</h1>
+                        <p className="text-lg md:text-2xl text-muted-foreground mb-8 md:mb-10 leading-relaxed text-balance">
                             {project.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-4 mb-12">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10 md:mb-12">
                             {project.demoUrl && (
                                 <a
                                     href={project.demoUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:brightness-110 transition-all shadow-lg shadow-accent/20"
+                                    className="w-full sm:w-auto bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-lg shadow-accent/20 active:scale-95"
                                 >
                                     {t('project.visit')}
                                 </a>
@@ -64,30 +64,30 @@ export default function ProjectDetailsPage({ project }: ProjectDetailsPageProps)
                                     href={project.githubUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-muted hover:bg-muted/80 text-foreground px-8 py-4 rounded-full font-bold flex items-center gap-2 transition-all"
+                                    className="w-full sm:w-auto bg-muted hover:bg-muted/80 text-foreground px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all active:scale-95"
                                 >
                                     {t('project.viewCode')}
                                 </a>
                             )}
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 p-8 bg-muted/30 rounded-[32px] border border-border/50">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 p-6 md:p-8 bg-muted/30 rounded-2xl md:rounded-[32px] border border-border/50">
                             <div>
-                                <span className="text-xs tracking-widest text-muted-foreground font-bold block mb-2">{t('project.role')}</span>
+                                <span className="text-[10px] md:text-xs tracking-widest text-muted-foreground font-bold block mb-2 uppercase">{t('project.role')}</span>
                                 <span className="font-bold flex items-center gap-2 text-sm md:text-base">
                                     <UserIcon className="w-4 h-4 text-accent" />
                                     Lead Dev
                                 </span>
                             </div>
                             <div>
-                                <span className="text-xs tracking-widest text-muted-foreground font-bold block mb-2">{t('project.year')}</span>
+                                <span className="text-[10px] md:text-xs tracking-widest text-muted-foreground font-bold block mb-2 uppercase">{t('project.year')}</span>
                                 <span className="font-bold flex items-center gap-2 text-sm md:text-base">
                                     <CalendarDateRangeIcon className="w-4 h-4 text-accent" />
                                     2025
                                 </span>
                             </div>
                             <div>
-                                <span className="text-xs tracking-widest text-muted-foreground font-bold block mb-2">{t('project.tech')}</span>
+                                <span className="text-[10px] md:text-xs tracking-widest text-muted-foreground font-bold block mb-2 uppercase">{t('project.tech')}</span>
                                 <span className="font-bold flex items-center gap-2 text-sm md:text-base">
                                     <CommandLineIcon className="w-4 h-4 text-accent" />
                                     Full Stack
@@ -100,7 +100,7 @@ export default function ProjectDetailsPage({ project }: ProjectDetailsPageProps)
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative aspect-video lg:aspect-[4/3] rounded-[48px] overflow-hidden shadow-2xl shadow-black/10"
+                        className="relative aspect-video lg:aspect-[4/3] rounded-2xl md:rounded-[48px] overflow-hidden shadow-2xl shadow-black/5"
                     >
                         <Image
                             src={project.image}

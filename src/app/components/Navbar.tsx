@@ -16,7 +16,7 @@ const getNavItems = (t: (key: string) => string) => [
 ];
 
 export default function Navbar() {
-    const { language, setLanguage, t } = useLanguage();
+    const { t } = useLanguage();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     
@@ -58,26 +58,6 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </div>
-                    <div className="flex items-center gap-2 mr-2">
-                        <button 
-                            onClick={() => setLanguage('en')}
-                            className={cn(
-                                "text-xs font-bold px-2 py-1 rounded-md transition-all",
-                                language === 'en' ? "bg-accent text-white" : "text-muted-foreground hover:text-foreground"
-                            )}
-                        >
-                            EN
-                        </button>
-                        <button 
-                            onClick={() => setLanguage('fr')}
-                            className={cn(
-                                "text-xs font-bold px-2 py-1 rounded-md transition-all",
-                                language === 'fr' ? "bg-accent text-white" : "text-muted-foreground hover:text-foreground"
-                            )}
-                        >
-                            FR
-                        </button>
-                    </div>
                     <div className="h-4 w-[1px] bg-border mx-2" />
                     <div className="flex items-center gap-4">
                         <ThemeToggle />
@@ -92,26 +72,6 @@ export default function Navbar() {
 
                 {/* Mobile Toggle */}
                 <div className="flex md:hidden items-center gap-3">
-                    <div className="flex items-center gap-1 bg-muted/50 p-1 rounded-lg">
-                        <button 
-                            onClick={() => setLanguage('en')}
-                            className={cn(
-                                "text-[10px] font-bold px-2 py-1 rounded-md transition-all",
-                                language === 'en' ? "bg-background shadow-sm" : "opacity-50"
-                            )}
-                        >
-                            EN
-                        </button>
-                        <button 
-                            onClick={() => setLanguage('fr')}
-                            className={cn(
-                                "text-[10px] font-bold px-2 py-1 rounded-md transition-all",
-                                language === 'fr' ? "bg-background shadow-sm" : "opacity-50"
-                            )}
-                        >
-                            FR
-                        </button>
-                    </div>
                     <ThemeToggle />
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

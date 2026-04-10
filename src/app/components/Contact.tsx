@@ -13,34 +13,34 @@ const socials = [
 export default function Contact() {
     const { t } = useLanguage();
     return (
-        <section id="contact" className="py-24">
-            <div className="container mx-auto px-6">
-                <div className="bg-foreground text-background rounded-[48px] p-8 md:p-16 overflow-hidden relative">
+        <section id="contact" className="py-16 md:py-24">
+            <div className="container mx-auto px-4 sm:px-6">
+                <div className="bg-foreground text-background rounded-3xl md:rounded-[48px] p-6 sm:p-10 md:p-16 overflow-hidden relative">
                     {/* Decorative gradients */}
-                    <div className="absolute top-0 right-0 w-[40%] h-[100%] bg-accent/20 blur-[100px] pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-[60%] h-[100%] bg-accent/20 blur-[120px] pointer-events-none" />
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div>
-                            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-balance">
-                                {t('contact.title.line1')} <br />
+                            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight">
+                                {t('contact.title.line1')} <br className="hidden sm:block" />
                                 <span className="text-muted-foreground/50">{t('contact.title.line2')}</span>
                             </h2>
-                            <div className="space-y-6 mb-12">
-                                <a href="mailto:danieldevelopper9@gmail.com" className="group flex items-center gap-4 text-xl md:text-2xl font-medium hover:text-accent transition-colors">
-                                    <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:border-accent transition-colors">
+                            <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
+                                <a href="mailto:danieldevelopper9@gmail.com" className="group flex items-center gap-3 sm:gap-4 text-lg sm:text-xl md:text-2xl font-medium hover:text-accent transition-colors break-all">
+                                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:border-accent transition-colors">
                                         <EnvelopeIcon className="w-5 h-5" />
                                     </div>
                                     danieldevelopper9@gmail.com
                                 </a>
-                                <a href="tel:+2290149037744" className="group flex items-center gap-4 text-xl md:text-2xl font-medium hover:text-accent transition-colors">
-                                    <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:border-accent transition-colors">
+                                <a href="tel:+2290149037744" className="group flex items-center gap-3 sm:gap-4 text-lg sm:text-xl md:text-2xl font-medium hover:text-accent transition-colors">
+                                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:border-accent transition-colors">
                                         <PhoneIcon className="w-5 h-5" />
                                     </div>
                                     +229 014 903 7744
                                 </a>
                             </div>
 
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-3 sm:gap-4">
                                 {socials.map((social, idx) => (
                                     <motion.a
                                         key={idx}
@@ -49,7 +49,7 @@ export default function Contact() {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                                         aria-label={social.label}
                                     >
                                         {social.icon}
@@ -58,23 +58,23 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <div className="bg-background/5 border border-white/10 backdrop-blur-md p-8 rounded-3xl">
-                            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
+                        <div className="bg-background/5 border border-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl sm:rounded-3xl">
+                            <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                    <div className="space-y-1.5 md:space-y-2">
                                         <label className="text-sm font-medium text-white/70">{t('contact.label.name')}</label>
-                                        <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder={t('contact.placeholder.name')} />
+                                        <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base" placeholder={t('contact.placeholder.name')} />
                                     </div>
-                                    <div className="space-y-2">
+                                    <div className="space-y-1.5 md:space-y-2">
                                         <label className="text-sm font-medium text-white/70">{t('contact.label.email')}</label>
-                                        <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder={t('contact.placeholder.email')} />
+                                        <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base" placeholder={t('contact.placeholder.email')} />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1.5 md:space-y-2">
                                     <label className="text-sm font-medium text-white/70">{t('contact.label.project')}</label>
-                                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none" placeholder={t('contact.placeholder.project')} />
+                                    <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none text-sm sm:text-base" placeholder={t('contact.placeholder.project')} />
                                 </div>
-                                <button type="submit" className="w-full bg-accent text-white py-4 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-accent/20">
+                                <button type="submit" className="w-full bg-accent text-white py-3.5 sm:py-4 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-accent/20 active:scale-[0.98]">
                                     {t('contact.send')}
                                 </button>
                             </form>
